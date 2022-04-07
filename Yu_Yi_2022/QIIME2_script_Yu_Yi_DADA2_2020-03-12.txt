@@ -1,0 +1,276 @@
+# This script is for the 16S amplicon sequence analysis of Yu Yi's samples
+# Builted on 12-03-2020 by Jia Xiu
+
+# if submit job to Peregrine HPC as .sh file, i.e. import_multiplex_seq.sh, add following header to .sh file
+#!/bin/bash
+#SBATCH --job-name=
+#SBATCH --time=3:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --mem=12GB
+#SBATCH --partition=
+#SBATCH -o import-%j.out
+#SBATCH -e import-%j.error
+#SBATCH --mail-type=FAIL,END
+#SBATCH --mail-user=you-email@rug.nl
+
+# change directory
+cd $PWD
+
+
+# using keemei to validate sample-metadata-yi.tsv files
+
+
+# load QIIME2
+module load QIIME2/2019.10
+
+
+# demutiplex raw sequences get from Minnesota University
+
+
+# Import the multiplexed sequences
+
+cd raw_seq/dna-demux-sequences/
+
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path MANIFEST-yi.txt \
+  --output-path paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred33
+
+qiime demux summarize \
+  --i-data paired-end-demux.qza \
+  --o-visualization paired-end-demux.qzv
+
+
+# DADA2 sequence quality control
+
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs paired-end-demux.qza \
+  --o-table table.qza \
+  --o-representative-sequences rep-seqs.qza \
+  --p-trim-left-f 0 \
+  --p-trim-left-r 0 \
+  --p-trunc-len-f 249 \
+  --p-trunc-len-r 204 \
+  --p-chimera-method pooled \
+  --o-denoising-stats stats-dada2.qza
+
+# FeatureTable and FeatureData summarize
+qiime feature-table summarize \
+  --i-table table.qza \
+  --o-visualization table.qzv \
+  --m-sample-metadata-file sample-metadata-yi.tsv
+
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs.qza \
+  --o-visualization rep-seqs.qzv
+
+qiime metadata tabulate \
+  --m-input-file stats-dada2.qza \
+  --o-visualization stats-dada2.qzv
+
+
+# exporting a nontaxa OTU table
+qiime tools export \
+  --input-path table.qza \
+  --output-path exported/
+
+# convert biom to txt
+#biom convert -i nontaxonomic-otu-table/feature-table.biom -o OTU-table-nontax.tsv --to-tsv
+
+
+### Taxonomic analysis ###
+
+# assign taxonomy by silva database
+qiime feature-classifier classify-sklearn \
+  --i-classifier silva-132-99-515-806-nb-classifier.qza \
+  --i-reads rep-seqs.qza \
+  --o-classification taxonomy.qza
+
+# summerize taxonomy info
+qiime metadata tabulate \
+  --m-input-file taxonomy.qza \
+  --o-visualization taxonomy.qzv
+
+# Export taxonomy
+qiime tools export \
+  --input-path taxonomy.qza \
+  --output-path exported_taxonomy
+
+
+
+### Remove mitochondria, cloroplasti, archaea and keep sequence assigned at phyla level (D_0_ for SILVA database) ###
+
+
+# filter feature table
+qiime taxa filter-table \
+  --i-table table.qza \
+  --i-taxonomy taxonomy.qza \
+  --p-include D_0__ \
+  --p-exclude archaea,eukaryota,mitochondria,chloroplast \
+  --o-filtered-table table-filtered.qza
+
+qiime feature-table filter-features \
+  --i-table table-filtered.qza \
+  --p-min-frequency 2 \
+  --o-filtered-table table-filtered.qza
+
+# filter representative sequences
+qiime taxa filter-seqs \
+  --i-sequences rep-seqs.qza \
+  --i-taxonomy taxonomy.qza \
+  --p-include D_0__ \
+  --p-exclude archaea,eukaryota,mitochondria,chloroplast \
+  --o-filtered-sequences rep-seqs-filtered.qza
+
+# summerize filtered FeatureTable and FeatureData
+qiime feature-table summarize \
+  --i-table table-filtered.qza \
+  --o-visualization table-filtered.qzv \
+  --m-sample-metadata-file sample-metadata-yi.tsv
+
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs-filtered.qza \
+  --o-visualization rep-seqs-filtered.qzv
+
+qiime tools export \
+  --input-path table-filtered.qza \
+  --output-path exported-table
+
+biom convert -i exported-table/feature-table.biom -o feature-table-filtered.tsv --to-tsv
+
+
+### generate a phylogenetic tree using the filtered represented sequences ###
+qiime phylogeny align-to-tree-mafft-fasttree \
+  --i-sequences rep-seqs-filtered.qza \
+  --o-alignment aligned-rep-seqs.qza \
+  --o-masked-alignment masked-aligned-rep-seqs.qza \
+  --o-tree unrooted-tree.qza \
+  --o-rooted-tree rooted-tree.qza
+
+qiime tools export \
+  --input-path rooted-tree.qza \
+  --output-path exported-tree
+
+
+### Alpha and beta diversity ###
+# rarefy
+# check --p-sampling-depth in the table-filtered.qzv
+qiime feature-table rarefy \
+    --i-table table-filtered.qza \
+    --p-sampling-depth 1100 \
+    --o-rarefied-table table-rarified.qza
+
+# rarified FeatureTable and FeatureData summarize
+qiime feature-table summarize \
+  --i-table table-rarified.qza \
+  --o-visualization table-rarified.qzv \
+  --m-sample-metadata-file sample-metadata-yi.tsv
+
+# exporting a rarified feature table
+qiime tools export \
+  --input-path table-rarified.qza \
+  --output-path exported-table/  # extracted will will do this verbosely
+
+# convert biom to txt
+biom convert -i exported-table/feature-table.biom -o feature-table-rarified-nontax.tsv --to-tsv
+
+
+# diversity analysis:  # check --p-sampling-depth in the table-filtered.qzv
+qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny rooted-tree.qza \
+  --i-table table-rarified.qza \
+  --p-sampling-depth 1100 \
+  --m-metadata-file sample-metadata-yi.tsv \
+  --output-dir core-metrics-results
+
+# exporting matrix
+qiime tools export \
+  --input-path core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --output-path exported-matrix
+
+mv exported-matrix/distance-matrix.tsv ./unweighted_unifrac_distance_matrix.tsv
+
+qiime tools export \
+  --input-path core-metrics-results/weighted_unifrac_distance_matrix.qza \
+  --output-path exported-matrix
+
+mv exported-matrix/distance-matrix.tsv ./weighted_unifrac_distance_matrix.tsv
+
+#rarefaction curve
+qiime diversity alpha-rarefaction \
+  --i-table table-rarified.qza \
+  --i-phylogeny rooted-tree.qza \
+  --p-max-depth 1100 \
+  --m-metadata-file sample-metadata-yi.tsv \
+  --o-visualization alpha-rarefaction.qzv \
+  --verbose
+
+### statistics ###
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/faith_pd_vector.qza \
+  --m-metadata-file sample-metadata-yi.tsv \
+  --o-visualization core-metrics-results/faith-pd-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/evenness_vector.qza \
+  --m-metadata-file sample-metadata-yi.tsv \
+  --o-visualization core-metrics-results/evenness-group-significance.qzv
+
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file sample-metadata-yi.tsv \
+  --m-metadata-column Treatment \
+  --o-visualization core-metrics-results/unweighted-unifrac-Treatment-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file sample-metadata-yi.tsv \
+  --m-metadata-column Genotype \
+  --o-visualization core-metrics-results/weighted-unifrac-Genotype-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file sample-metadata-yi.tsv \
+  --m-metadata-column Development stage \
+  --o-visualization core-metrics-results/weighted-unifrac-Development-stage-significance.qzv \
+  --p-pairwise
+
+qiime taxa barplot \
+  --i-table table-filtered.qza \
+  --i-taxonomy taxonomy.qza \
+  --m-metadata-file sample-metadata-yi.tsv \
+  --o-visualization taxa-bar-plots.qzv
+
+# Taxa summary
+qiime taxa collapse \
+  --i-table table-rarified.qza \
+  --i-taxonomy taxonomy.qza \
+  --p-level 6 \
+  --o-collapsed-table table-level-6.qza
+
+qiime composition add-pseudocount \
+  --i-table table-level-6.qza \
+  --o-composition-table table-6.qza
+
+qiime composition ancom \
+  --i-table table-6.qza \
+  --m-metadata-file sample-metadata-yi.tsv \
+  --m-metadata-column Treatment \
+  --o-visualization ancom-subject-Treatment.qzv
+
+qiime composition ancom \
+  --i-table table-6.qza \
+  --m-metadata-file sample-metadata-yi.tsv \
+  --m-metadata-column Genotype \
+  --o-visualization ancom-subject-Genotype.qzv
+
+qiime composition ancom \
+  --i-table table-6.qza \
+  --m-metadata-file sample-metadata-yi.tsv \
+  --m-metadata-column Development stage \
+  --o-visualization ancom-subject-stage.qzv
