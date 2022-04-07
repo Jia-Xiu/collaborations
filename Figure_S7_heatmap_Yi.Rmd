@@ -1,0 +1,111 @@
+---
+title: "Heatmap for the bacterial communties -- Yu, Yi"
+author: "Jia, Xiu (xibeihenai@gmail.com)"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+
+This is the script for generating Figure S7 in Yu et al. Molecular Cell (2022).
+
+### Initiate libraries
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(reshape2)
+```
+
+### Import dataset
+
+```{r, message=FALSE, warning=FALSE}
+
+rm(list=ls())
+
+# read ASV table
+com <- read.csv("feature-table-L3-heterozygous-rarified-nontax.csv", header = 1, row.names = 1, sep = ",")
+# colnames(com) <- gsub('\\.', '_', colnames(com))
+dim(com)
+# write.csv(com, "feature-table-L3-heterozygous-rarified-nontax.csv")
+
+# read taxonomy info
+# taxa <- read.csv("taxonomy.csv", sep=",", header=1, row.names=1)
+# taxa <- taxa[row.names(taxa) %in% row.names(com), ]
+# write.csv(taxa, "taxonomy_cleaned_raw.csv")
+taxa <- read.csv("taxonomy_cleaned.csv", sep=",", header=1, row.names=1)
+str(taxa)
+
+# combine otu table and taxa info
+com <- transform(merge(taxa, com, by="row.names"), row.names=Row.names, Row.names=NULL)
+com <- com[, -2]
+dim(com)
+
+warning("double check is the table rarified or not?")
+range(colSums(com[, -1]))
+(rarefactiondepth <- mean(colSums(com[, -1])))
+```
+
+
+### Prepare dataframe for plotting
+
+```{r, message=FALSE, warning=FALSE}
+
+# combine ASVs have same taxonomy
+df <- aggregate(com[,-1], list(com$Taxon), sum)
+row.names(df) <- df$Group.1
+df <- df[, -1]
+df <- 100*df/rarefactiondepth
+df <- t(df)
+df <- as.data.frame(df)
+dim(df)
+
+# split treatment info
+group_info <- data.frame(row.names=rownames(df), t(as.data.frame(strsplit(rownames(df),"_"))))
+head(group_info)
+
+df <- data.frame(Treatments = as.factor(group_info[,2]), 
+                 replicates = as.factor(group_info[,4]),
+                 df)
+df$Treatments <- as.character(df$Treatments)
+df$Treatments[df$Treatments == "VitaminB5"] <- "Pantothenate"
+df$Treatments <- factor(df$Treatments)
+df$Treatments[df$Treatments == "VitaminB5"] <- "Pantothenate"
+levels(df$Treatments)
+
+df <- melt(df, id.vars = c("Treatments", "replicates"))
+head(df)
+
+# log transform relative abundance
+df$logvalue <- log10(df$value)
+
+```
+
+### Heatmap
+
+```{r}
+
+(p <- ggplot(df, aes(replicates, variable, fill = logvalue)) + 
+    geom_tile(colour = "white") + 
+    scale_fill_distiller(palette = "RdYlBu") +
+    facet_grid(. ~ Treatments, scales = "free_x", space = "free_x") +
+    labs(x = "Replicates", y = "", title = "L3 stage",
+         fill = "Relative \nabundance (%)") + 
+    scale_x_discrete(expand = c(0, 0)) +
+    scale_y_discrete(expand = c(0, 0)) + 
+    theme_bw() +
+    theme(text = element_text(size=11),
+          axis.ticks = element_blank(),
+          strip.background = element_blank(),
+          strip.text=element_text(face = "bold", size = 11),
+          legend.box.background = element_rect(),
+          legend.title = element_text(face = "bold"),
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank()))
+
+# ggsave("taxa_all_heatmap.pdf", width = 26, height = 26, units = "cm", p, scale = 1.5)
+```
+
+
+### Session Info
+
+```{r}
+sessionInfo()
+```

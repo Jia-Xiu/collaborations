@@ -1,0 +1,621 @@
+Feature ID,Domain ,Phylum ,Class ,Order,Family,Genus ,Species,Confidence
+13e31540432f65cb5f06fcde85b69c8b,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997554865
+e12effb6ec1fdeb2f4b3fc5ac9a691ad,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997554906
+35a7a7077a26370ac466525b70d44629,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997561056
+244f5cdd01dcd44bd6dc9736eb23cbbf,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997569228
+0566a9753a856f3db23ef7b6a2d93ebc,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997550625
+1b1092e1ea11e2631434447639629423,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997208029
+0aecf2892a9b0e621c6d17b521d70180,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997553524
+3333476542c0dda12eca00fabceb20c7,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,,0.955317019
+75221aaf2aebc1894f4861bba655f0ec,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,Acetobacter persici,0.912170521
+67d9b73145485e41a303df05647e4b32,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,,0.999928073
+6f58c25ce48fdb1b2f2314c1c3590010,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,,0.932795929
+9d609dae14036050a42d64f6e70039c0,Bacteria,Actinobacteria,Actinobacteria,Corynebacteriales,Corynebacteriaceae,Corynebacterium 1,,0.853529529
+cf059a5bccad6b962d5d5abbe698ea47,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.994663859
+0d67396fb8d7936ab75c617b73d87c70,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,,0.949834492
+f47bf520b64d7da67fe8735031b838bc,Bacteria,Firmicutes,Bacilli,Lactobacillales,Leuconostocaceae,Leuconostoc,,0.999988
+a91611acbc118d349ce76e12b96a6496,Bacteria,Firmicutes,Bacilli,Lactobacillales,Enterococcaceae,Enterococcus,,0.930342691
+c5805b09f539d798fb515cf0de409c00,Bacteria,Actinobacteria,Actinobacteria,Corynebacteriales,Corynebacteriaceae,Corynebacterium,,0.959776409
+bf697a7435324d455075da72c243fe9c,Bacteria,,,,,,,0.806820463
+fc2d774d1fe6318f3d65cf8a5eb88f35,Bacteria,,,,,,,0.803193864
+1699429c0abb1868dfac2466295ecfc7,Unassigned,,,,,,,0.884178593
+d563cf9e84f54e49e3a02b4e05d32442,Unassigned,,,,,,,0.808619272
+3e3c9aa52c0da8f45ce032fd7fd3c627,Bacteria,,,,,,,0.813063505
+352c936013e49098ad1525b4769f9e33,Unassigned,,,,,,,0.879912824
+9aa54e5d112f53275c60e04d8a8719f2,Bacteria,,,,,,,0.813546751
+cbf4c133650f8b7812b121b072bec278,Unassigned,,,,,,,0.860893012
+d09f14d2d0ba459bbb0aa4d37ce9e7e0,Unassigned,,,,,,,0.870952272
+4207ef66c3ab91a30922d6e0e4a25e46,Unassigned,,,,,,,0.80014706
+d6afea01f9cb346659c3dee03bb6dd7f,Unassigned,,,,,,,0.864059791
+b0bf66919e0ab4dac4315c59c71bf34c,Bacteria,,,,,,,0.805404123
+6346356283a4464ac8bfc1ef5adfcc74,Bacteria,Firmicutes,Bacilli,Lactobacillales,Enterococcaceae,Enterococcus,,0.98281195
+dc156527ef48f95c29cfeb4df3512a2c,Unassigned,,,,,,,0.864143952
+13258d4a1f4cadc4229c6c545dac61a9,Unassigned,,,,,,,0.829038756
+152f8037c25855a947e8ffb686b07a86,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,Lactobacillus alimentarius,0.829777082
+8851dce15f063d815d86f7b5a220770d,Unassigned,,,,,,,0.42694488
+cea07c5dee9bead303036203d1b8220e,Unassigned,,,,,,,0.856295696
+a319a9a0ab7eb2843a40a7aed13800aa,Unassigned,,,,,,,0.369367668
+d599648341a4241f448e2e18859e6c05,Unassigned,,,,,,,0.880129352
+8b1ca15c1b3f71611181a060a6acf060,Unassigned,,,,,,,0.646286184
+db2be5f73ee43e183058b65f96217eae,Bacteria,,,,,,,0.814330866
+9877d8ccc055ec16ce6b9b397f967207,Unassigned,,,,,,,0.841349951
+67c0992c49b1b04d2e0693ba23fe8224,Unassigned,,,,,,,0.636337346
+8411abcec51f9ae364491ccbb797b789,Unassigned,,,,,,,0.820690272
+a827b123a79dada5708192396588df5a,Unassigned,,,,,,,0.344035893
+e1bfeee1bee526ca68f4561592f46367,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.997524985
+d4afe9a03e3c4b1a42bacba3ebc4477c,Unassigned,,,,,,,0.786429214
+e6e4fd1fd4f6f168057365ec4194eb07,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Marinifilaceae,Butyricimonas,,0.902625231
+f3fa4e785defa2cf0d30f8c451d9dbc3,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Novosphingobium,,0.965041083
+542fa1c42cf3bf9d77cf13df697b1d19,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999998
+b56427a62aaae816bd8a8b5266e6181c,Unassigned,,,,,,,0.94810409
+a890976284aab0feb7c9e9a82147f6a0,Unassigned,,,,,,,0.887025237
+5dacfa174e736968c1b2e04b7ad2a221,Unassigned,,,,,,,0.891525929
+f690e253d56eb9fda173a16230243625,Unassigned,,,,,,,0.521570217
+cb90537d7026156bd4843f3521bc06cb,Unassigned,,,,,,,0.493238404
+6875cc1bc5065035a6e8070c8b029962,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Tannerellaceae,Parabacteroides,Parabacteroides goldsteinii CL02T12C30,0.765923069
+2f2c2a684ce9ac819685e3a8267f6802,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,,,,1
+6cb86d6194fd8a0dca388218817d101d,Bacteria,Bacteroidetes,Bacteroidia,Flavobacteriales,Weeksellaceae,Cloacibacterium,,0.988197009
+e83f8562f384e0eb6548409017011bdc,Unassigned,,,,,,,0.888764698
+08b284cc90b695fcd6a9ac222735239d,Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,Bacillus,,0.871906485
+395da6037515555539c6569a45ae724c,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.999999879
+d73f168046c445ce87c91d6b7dd0139e,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999998
+772183a74c9ebf96be198d483de62102,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,1
+1794ee47172cc8a4ad6c08511f92c6b9,Bacteria,,,,,,,0.964291452
+fe4edb1d075650365d52b16bb1dac8ab,Bacteria,Verrucomicrobia,Verrucomicrobiae,Verrucomicrobiales,Akkermansiaceae,Akkermansia,unidentified,0.80090352
+f631223fcbf35f39e8694d35e6cdc802,Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,Bacillus,,0.999758959
+df08ae7f70a312d91e4b4fe2a8f3015c,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Micrococcaceae,Micrococcus,,0.997204493
+2760b24b444aaac9730a893e57c49b37,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Micrococcaceae,Micrococcus,,0.997184477
+ac9621c158d7f2088db001d36336dde9,Unassigned,,,,,,,0.787136968
+17a3016756e5e4ef685081c457783361,Bacteria,,,,,,,0.902645802
+6ce066e062c7fa3e67f6a2b20842b2dc,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999994
+66da89d1fda4bf97516f65e325db7829,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Lachnospiraceae NK4A136 group,,0.734166094
+6109d5424be641f29ddaefdfb8f54da3,Unassigned,,,,,,,0.787156689
+db37988352f0600269c8b5ba1ba3024c,Unassigned,,,,,,,0.856585299
+8762168e9d99e4cb4d8180b723497f23,Unassigned,,,,,,,0.870800806
+40a0908dbb52eed5527cf01254b91f55,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999993
+1ae522f7c361e9f9e7091ed535e08d45,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,bacterium NLAE-zl-H46,0.919190849
+bb8a9707d33f79898a954882d1b0e14f,Bacteria,Firmicutes,Bacilli,Bacillales,Staphylococcaceae,Staphylococcus,,0.999986211
+4f9ad7d66298d733633fa66f1e71213b,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999997
+0d63d71a79e78bb95ab82f6c4b5da4ac,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.999579972
+5d50e61797d295c09ad21c1cb4e392f0,Unassigned,,,,,,,0.791912857
+894b13815005d75e6129769169b618b6,Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,Bacillus,,0.993667002
+8d764ac49bb5e154fc1bee9520f89221,Bacteria,Bacteroidetes,Bacteroidia,Chitinophagales,Chitinophagaceae,Ferruginibacter,,0.871686992
+50a014167d412048ee74f75e781a1cec,Bacteria,,,,,,,0.925916704
+43456847e927731b9fc879f48d2fea9e,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,Acinetobacter indicus,0.800347863
+0fb7a97a9a4889e5864c170d47a86e6e,Bacteria,Bacteroidetes,Bacteroidia,Sphingobacteriales,Sphingobacteriaceae,Mucilaginibacter,,0.999768225
+f935c7b76d9678b0a312babea54d3c3b,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999999
+889ec2e1f03a945a15b3a6424e3c358e,Unassigned,,,,,,,0.840449898
+b64fd505a2f209a50cd9006424871a30,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacteriales,Enterobacteriaceae,,,0.999760166
+afea33b290e2229ae01e9b61a6b4d904,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Prevotellaceae,Alloprevotella,gut metagenome,0.998272502
+ad477881410a8f7f191d53c98570db4d,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999945
+6c7a50838e66f804ffb316c1e5986abe,Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,Bacillus,,0.992844357
+e013b905e795fdcc083ffd8db9fa7cb2,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999998
+358bb591de17f6d639eb8e0e8852faf0,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Parasutterella,uncultured organism,0.741848764
+48f47b0216d016c6014b9ff6e6066dca,Bacteria,Fusobacteria,Fusobacteriia,Fusobacteriales,Fusobacteriaceae,Fusobacterium,,1
+977f0ecdccf0178d2abf93b3fb9dea61,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999998
+25870c37a577f365504cff8a31a5e170,Bacteria,Epsilonbacteraeota,Campylobacteria,Campylobacterales,Helicobacteraceae,Helicobacter,Helicobacter sp. MIT 03-1616,0.828423617
+d1b3e5525a4c7fb9f731cfad0d1c8055,Unassigned,,,,,,,0.71328361
+8d220048e350e437927253f01a6986b7,Bacteria,Bacteroidetes,Bacteroidia,Flavobacteriales,Flavobacteriaceae,Flavobacterium,,0.999999817
+430bbf9594aa6de2c632c2d34ac3ada1,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Ralstonia,Ralstonia pickettii,0.867103732
+a2bb57adb455b161478a2ace1e843e14,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,,0.999998142
+7b8a92083be2df65238c9c582b029e0c,Unassigned,,,,,,,0.896445814
+d75d23fea01bb88f0566d098158622a4,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Burkholderia-Caballeronia-Paraburkholderia,,0.974414639
+0d16cd32fa68385340e879902ba285bf,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Blautia,,0.999999705
+0393d6515236ba8386c64d91536930e7,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Lachnospiraceae NK4A136 group,uncultured Clostridiales bacterium,0.933324155
+84497aaf5f18bcccca05ed8c85cf5c4a,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999944
+424c9e1ef7384bef7679d0c6425b2bd6,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Prevotellaceae,Prevotellaceae UCG-001,uncultured Bacteroidales bacterium,0.960320114
+5339847a92dfebd579dd794da3c08779,Unassigned,,,,,,,0.613325652
+1c8d5717456cf60881d1826a3380e16c,Bacteria,Firmicutes,Bacilli,Bacillales,Staphylococcaceae,Staphylococcus,,0.999981925
+f4245ca57855e449c68bd1f6a92ef96f,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Muribaculaceae,uncultured bacterium,uncultured bacterium,0.899592638
+083bab81284862b2fcb75599551bef37,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Muribaculaceae,uncultured bacterium,uncultured bacterium,0.965165469
+faad2bc60f6df5dce1b0d4a1202442be,Unassigned,,,,,,,0.595533452
+0296c4e8ecd66463c82e6d5267dd8ae3,Unassigned,,,,,,,0.821705244
+3a4cc976e7d2d2162a607daa204f6685,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.999345716
+3cd303c161152a09d9084fdf76195941,Bacteria,Deferribacteres,Deferribacteres,Deferribacterales,Deferribacteraceae,Mucispirillum,Mucispirillum schaedleri ASF457,0.875772801
+d433d66996c65e3c0a3b4428779b7e47,Bacteria,Proteobacteria,Gammaproteobacteria,Alteromonadales,Shewanellaceae,Shewanella,,0.999978861
+191d4cb73f58c437f5bc65e1a0c34f1a,Bacteria,Proteobacteria,Alphaproteobacteria,Caulobacterales,Caulobacteraceae,Brevundimonas,,0.942369656
+9a131467f2991b843ecae33c3760b9ab,Unassigned,,,,,,,0.857100396
+c2688372a48e9117bf4969f5fb13a97f,Unassigned,,,,,,,0.601239896
+38b728a53c9970a190a8547efddbcee6,Unassigned,,,,,,,0.899996846
+f2a7fe6df1b7d33352ea7e48c3f94bbf,Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Lactococcus,,0.99999866
+ff377bf448579f20ed5c9fcbd2b62bf5,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Muribaculaceae,uncultured bacterium,uncultured bacterium,0.963522731
+c3c872d4606e2e1d7b5b221b7ae7652b,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999999
+d58438b7955542d6a6e6f9fb3a607aa0,Unassigned,,,,,,,0.834356454
+410a6ca0d3c2066b4bb29dd0964129f3,Bacteria,,,,,,,0.908661118
+e49c46afa37d4e3a5315fe3c80972678,Bacteria,,,,,,,0.945598092
+25fa82d6c4757cf88f9865e01e203e9c,Unassigned,,,,,,,0.662814721
+01aa813a4ee64c7277c346f108479043,Bacteria,Verrucomicrobia,Verrucomicrobiae,Chthoniobacterales,Chthoniobacteraceae,Candidatus Udaeobacter,,0.99999996
+60a0fc2de6708ffd3f18a02182d85f99,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,[Eubacterium] coprostanoligenes group,,0.999991677
+64ddf32fc38f6ea6531f6e1aa8aad685,Bacteria,,,,,,,0.761181878
+de4712aecfe64c408d8e3bb141177252,Unassigned,,,,,,,0.866843926
+53fef383f0c68d779f039c250a3dbf7b,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Ramlibacter,,0.847752926
+fc00e0833241c56dd7fa7496a24381ef,Bacteria,Firmicutes,Clostridia,Clostridiales,Peptococcaceae,uncultured,uncultured organism,0.999927702
+d920d2ea5271700f100f7d87ad29fca0,Bacteria,Firmicutes,Bacilli,Lactobacillales,Enterococcaceae,Enterococcus,,0.966879299
+32c87c9870842f178bb4431340eaeceb,Bacteria,Firmicutes,Bacilli,Bacillales,Planococcaceae,Lysinibacillus,,0.988886146
+755830e5c85696b6393acbbfad8560d6,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.998313102
+2a26c4dbbe78cc1d46858b445f3a6e6b,Unassigned,,,,,,,0.900213737
+9913a3be6f06f108f3ee804527314a3b,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacteriales,Enterobacteriaceae,Escherichia-Shigella,,0.960977352
+f6728edebb838dd38d9786f24d042f03,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,,,0.999980339
+8a978a3c8a38a7f5da097e0af7ce3e1c,Bacteria,Patescibacteria,Saccharimonadia,Saccharimonadales,,,,0.999999995
+e36512be495778548ee442c4273e478d,Bacteria,,,,,,,0.765858325
+d139a6e2846508270ec35d542658facb,Unassigned,,,,,,,0.667039242
+2cbbb4929cc691a19cea3b6bacadc331,Unassigned,,,,,,,0.860289679
+746f9077d4642f24a388c1e5e77fbb45,Unassigned,,,,,,,0.777871862
+dd7f51c6f3cde6fe9205e9f14d47b2e1,Bacteria,Chloroflexi,KD4-96,uncultured Chloroflexi bacterium,uncultured Chloroflexi bacterium,uncultured Chloroflexi bacterium,uncultured Chloroflexi bacterium,0.754258244
+af5e00048eab729a282a9e5279f9ee2a,Unassigned,,,,,,,0.899967004
+beaabcdf2f60e472d5b69ae037c958e4,Bacteria,Actinobacteria,Actinobacteria,Corynebacteriales,Corynebacteriaceae,Corynebacterium 1,,0.810305383
+6828b2f7d89fb90cd3f4f643fdf778dc,Bacteria,,,,,,,0.848810017
+19796ae5a946758c48ff76b728f7090c,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Tannerellaceae,Parabacteroides,,0.999999998
+9f0f5e5dbcf1bc28a3dd6a1445946bfe,Bacteria,,,,,,,0.711000869
+d82786ea3ce00abc1c54ba4ed7339b62,Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Streptococcus,,0.997900103
+1b30416fb4ff9bb4944a46ba3bab60c3,Bacteria,Bacteroidetes,Bacteroidia,Flavobacteriales,Weeksellaceae,Chryseobacterium,,0.999984349
+b7ccaf07cb50da669942cb79aaf1663a,Bacteria,,,,,,,0.878840425
+62fb59830c9017321264c9f2024d3022,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Tannerellaceae,Parabacteroides,,0.999988266
+0da66f27ec1be058f475a8d705683d15,Bacteria,Proteobacteria,Alphaproteobacteria,SAR11 clade,Clade III,uncultured bacterium,uncultured bacterium,0.999908357
+5f47a71c22488266e5bf43b4added981,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Oscillibacter,unidentified,0.976267523
+d338b027df23ad8c9225f74500de0c8f,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Hydrogenophilaceae,Tepidiphilus,,0.99870452
+b23a63a628803473eb3e6fd54a2f2d35,Bacteria,,,,,,,0.93308077
+7a688c60385c6818af59942c27340cc1,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,,,,1
+818d358283e3404da08afbc98df01b67,Bacteria,Proteobacteria,Alphaproteobacteria,Rhodobacterales,Rhodobacteraceae,,,0.999606848
+575af7b314c648370c755d761f83896f,Bacteria,Patescibacteria,Saccharimonadia,Saccharimonadales,Saccharimonadaceae,,,0.759595582
+754018e2d6cf15fd0a2facff9a2c1238,Unassigned,,,,,,,0.516432187
+ddb99944511e3367fc608559e06ac00e,Bacteria,,,,,,,0.830030137
+f78cc7f7760af4b14714ac52c94653bc,Bacteria,Actinobacteria,Actinobacteria,Bifidobacteriales,Bifidobacteriaceae,Bifidobacterium,Bifidobacterium psychraerophilum DSM 22366,0.828637622
+c8b68f7a92642d275810e6c6367a808e,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,Bacteroides massiliensis B84634 = Timone 84634 = DSM 17679 = JCM 13223,0.987481475
+88102669f67ed8611f26d5251bfcf020,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Prevotellaceae,Prevotellaceae UCG-001,uncultured Bacteroidales bacterium,0.974324568
+d4d999d816365b5e7e26f29e1b3961c1,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Pseudomonadaceae,Pseudomonas,,0.9969301
+85921dc72dfa6f55d132e1ad8f1c6efd,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Rikenellaceae,Rikenella,uncultured bacterium,0.999999272
+ad236061604034d3f5e9de1a5e5312d3,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Cupriavidus,,0.950471429
+5bba14c71929772221d5ba7097881db6,Bacteria,Actinobacteria,Actinobacteria,Propionibacteriales,Propionibacteriaceae,Cutibacterium,,0.999865796
+27725c89e6db9a8f3ae613b7a97c150f,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacteriales,Enterobacteriaceae,Proteus,,0.943608604
+769b466215a816461250676a92f11745,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Sphingomonas,,0.977381721
+d41e5323c36224f92331207d516623ab,Bacteria,Verrucomicrobia,Verrucomicrobiae,Methylacidiphilales,Methylacidiphilaceae,uncultured,marine metagenome,0.998868582
+51e7ef84c837771e717528419fd8608d,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.999203321
+34b0839a75cd6191f94f2193bfc15960,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999999
+651cbc436137096b9821029dd347631d,Unassigned,,,,,,,0.879841861
+f776f17911efdc448a9e560cb6c96d84,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacteriales,Enterobacteriaceae,,,0.999778055
+97e0585fc64c41f405d7c9b59fc192fd,Bacteria,Actinobacteria,Actinobacteria,Propionibacteriales,Propionibacteriaceae,Cutibacterium,,0.999872639
+f54fd8b9d401ced106f5c7f2577bb519,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Muribaculaceae,uncultured bacterium,uncultured bacterium,0.857244278
+9e3887432259778d4147b3ce965a4a2a,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Lachnoclostridium 5,,0.800794299
+3022820e542139cc50a6411976c1c665,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacteriales,Enterobacteriaceae,,,0.990986575
+6817c7fb4fdaf189a7e83c32c06a82f4,Bacteria,Proteobacteria,Alphaproteobacteria,Rickettsiales,Mitochondria,,,0.999989342
+e83e79899b2e28ca0af20d44c93333cf,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Microbacteriaceae,uncultured bacterium,uncultured bacterium,0.731300826
+34258d134f76bb7ab8f4e93690cc2a5f,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Enhydrobacter,,0.999999976
+3ceead6e1dfc0efd032714677bac7eac,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,,,0.999990477
+8f7e1d5278cfd066ab5f069780eee83d,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Microbacteriaceae,uncultured bacterium,uncultured bacterium,0.742494014
+b6df8da2a103da8ef311729a0f889dbd,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Tepidimonas,Tepidimonas fonticaldi,0.798342046
+19d73042bac7ee0b109ab1aae60d0659,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Micrococcaceae,Kocuria,,0.979301332
+91cfc1f80c09b68e62dd62631f2924a3,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,,,,1
+51b57e5b685f3827cc37a4a92224b068,Bacteria,Firmicutes,Bacilli,Bacillales,Paenibacillaceae,Paenibacillus,,0.999990504
+6c4f364fb0d7d59a35cc38f689e902c2,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Microbacteriaceae,uncultured bacterium,uncultured bacterium,0.730630354
+ee52dc35aa72cfe57d2371ebb35bbe23,Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,Bacillus,,0.993096322
+4238ffc791ea5d6d4d88ebd2c1487dfc,Unassigned,,,,,,,0.723058894
+a80de30b6d51d5772392f762efea6577,Archaea,Euryarchaeota,Methanobacteria,Methanobacteriales,Methanobacteriaceae,Methanobrevibacter,,0.95378338
+31c289176cec20031daddc29621b138d,Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,Bacillus,,0.992848188
+69a6fa0bffcf1170bc6c4c629e922a4e,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Rikenellaceae,Alistipes,Alistipes sp. AL-1,0.82336574
+68ce67e60e7af03fdcc48805accaff05,Bacteria,Firmicutes,Clostridia,Clostridiales,Peptostreptococcaceae,Romboutsia,,0.708213977
+c1b097be92ccb86da7c36b2ffa377c29,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Parasutterella,uncultured bacterium,0.999065042
+6f778ceaa5fe5946932847034960d0eb,Bacteria,Patescibacteria,Saccharimonadia,Saccharimonadales,Saccharimonadaceae,TM7 phylum sp. oral clone DR034,TM7 phylum sp. oral clone DR034,0.976333598
+225f2216b71df41fb69e687bc3abc00f,Bacteria,Proteobacteria,Gammaproteobacteria,Xanthomonadales,Rhodanobacteraceae,Dyella,,0.882319839
+e8bfc6d36ce645f4bffd011bcc1d34a4,Bacteria,Proteobacteria,Alphaproteobacteria,Rhizobiales,Rhizobiaceae,Ochrobactrum,,0.789721587
+22b97c4b009c1ac8f3b2668ec4b1a61d,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,,0.977731365
+f6092cf37a7f6664b901d59cbad9f669,Bacteria,Fusobacteria,Fusobacteriia,Fusobacteriales,Leptotrichiaceae,Leptotrichia,Leptotrichia sp. oral clone FP036,0.862167732
+0e265dce1f9e72f26ecb2f43f1d8d11c,Unassigned,,,,,,,0.895935302
+fe0e7dccf06f9943fd2d70c6b4b1f26b,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Promicromonosporaceae,,,0.854856748
+23a577323206ae1c3f6e61c6effb37c1,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Bordetella,Bordetella sp. M1-6,0.781971206
+3b2d4cd03ab99c4a1e3ae6697e484658,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,A2,,0.967716626
+7b77c2c4d244237c816bbfda20bdf175,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.995953075
+e6295475c8ac2229a92578bc158f846e,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996356132
+2bcdd0151826b6987c37b2e3601d24eb,Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Streptococcus,,0.999999923
+cc2289be9336f046e89c921c4d748c73,Bacteria,,,,,,,0.947818927
+ff577d77d8a83f25e3fb054bf246d0fb,Unassigned,,,,,,,0.950608532
+e3bcdb09e2bca9dc29d41e5915a2f3a4,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Limnobacter,bacterium Ellin5074,0.963673599
+05107607b9569ad123f853e89a846b8f,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Micrococcaceae,Rothia,unidentified,0.882193011
+fa3702e6a1e1df6a95ae289d0a363719,Unassigned,,,,,,,0.864450997
+a339443ba29a208f9944622499b14119,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacteriales,Enterobacteriaceae,Escherichia-Shigella,,0.823307336
+fada635f9276f7e05f745db907964216,Bacteria,Actinobacteria,Actinobacteria,Propionibacteriales,Propionibacteriaceae,Cutibacterium,,0.999842552
+5c08c4b3d9a4dcfcb2420a62385e6caf,Archaea,Euryarchaeota,Methanobacteria,Methanobacteriales,Methanobacteriaceae,Methanobrevibacter,,0.953910094
+73eed8218dc9e8e6933e02f8cedc791a,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,,,,1
+06e8dc141dea671d321d0127b3cdadee,Bacteria,Actinobacteria,Thermoleophilia,Gaiellales,uncultured,uncultured bacterium 5G12,uncultured bacterium 5G12,0.978313904
+6c5d1b7e21b732fb179c41cbba1fc884,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Prevotellaceae,Alloprevotella,gut metagenome,0.998180928
+f84e9803a2ffbfdc120e883b1925792e,Bacteria,Proteobacteria,Deltaproteobacteria,Desulfovibrionales,Desulfovibrionaceae,Desulfovibrio,gut metagenome,0.796203542
+1d80402c5c6847ac84a43527a0fbdc58,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Marinifilaceae,Odoribacter,uncultured bacterium,0.999972894
+cc90a31a038de5008ad426ff1bd8ca6d,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,1
+94ad1062610dfd298a0cb426cee52250,Bacteria,Proteobacteria,Alphaproteobacteria,Rickettsiales,Mitochondria,,,0.999729557
+edd4e4eeda038908dd4f0ca02651fe65,Bacteria,,,,,,,0.921987386
+3618162d1616d972cb18854200d8a3e5,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Pseudomonadaceae,Pseudomonas,,0.999428149
+13c096c9c894fc45ee330e9185211b00,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacteriales,Enterobacteriaceae,Escherichia-Shigella,,0.958811109
+1e8a34eeea71515d7b0d716f07f820ed,Bacteria,Proteobacteria,Alphaproteobacteria,Caulobacterales,Caulobacteraceae,Brevundimonas,,0.942393619
+c222a846371e08b4d634d83ce7102860,Bacteria,Actinobacteria,Actinobacteria,Corynebacteriales,Corynebacteriaceae,Corynebacterium 1,Corynebacterium kroppenstedtii,0.996518975
+39c91d81e0ba2e37ef4113b7354a10d5,Unassigned,,,,,,,0.316387824
+032e95f99a5638ffb73574c69028afe5,Bacteria,Acidobacteria,Blastocatellia (Subgroup 4),Pyrinomonadales,Pyrinomonadaceae,RB41,,0.993137359
+9b17ba0671ecdd4ca27802197f8a4975,Bacteria,Proteobacteria,Alphaproteobacteria,Rickettsiales,Mitochondria,,,0.993274432
+f7a76febe806608b778d94a5ee53b648,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Sphingomonas,,0.889359465
+3cc30932a46c929d53ce8c3971929e0e,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,UBA1819,,0.999812534
+d15d7066d95f44a8c92316857ae716b5,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Microbacteriaceae,uncultured bacterium,uncultured bacterium,0.731306558
+72b6a357cb828283466da31e6e8829fd,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Ruminococcaceae UCG-013,,0.98875093
+facc141b64e82fb7fba091e90de8b94a,Bacteria,Epsilonbacteraeota,Campylobacteria,Campylobacterales,Helicobacteraceae,Helicobacter,,0.999999998
+e93d99bb4b707cc778350495125dbe3e,Bacteria,Epsilonbacteraeota,Campylobacteria,Campylobacterales,Helicobacteraceae,Helicobacter,,0.999999978
+2b0550005fd9cd520f02df07a2e74dcf,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Tannerellaceae,Parabacteroides,,0.999999998
+ec61bcad6b54897b47b729f5872e7f2f,Bacteria,Proteobacteria,Alphaproteobacteria,Rickettsiales,Mitochondria,Berkeleya fennica,Berkeleya fennica,0.999814519
+b3dc04a805a565e5b23aca32325b43f6,Bacteria,Cyanobacteria,Oxyphotobacteria,Leptolyngbyales,Leptolyngbyaceae,uncultured,uncultured Oscillatoriales cyanobacterium,0.804987198
+75021352aa209e20232585f6b349b2e7,Unassigned,,,,,,,0.736629024
+52e03ed023c2eb7742b66a13872ab90a,Unassigned,,,,,,,0.916068778
+4f28a3eb63d24ddfbc0093905ad25a23,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Burkholderia-Caballeronia-Paraburkholderia,,0.975265317
+b7853429590c5b2d69b906cf0a9d75fc,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Pseudomonadaceae,Pseudomonas,,0.999567612
+052aa2128ebd293327b3bcd09f6c4f3d,Bacteria,Firmicutes,Bacilli,Bacillales,Family XI,Gemella,,0.999958282
+34fcb7a6681034a74c957d068e26a533,Bacteria,Actinobacteria,Actinobacteria,Corynebacteriales,Corynebacteriaceae,Lawsonella,,0.999999165
+b056a82701db900af30914a0b72dbc1d,Unassigned,,,,,,,0.764187112
+a33f6b89c83866d64b7336d347418b9b,Bacteria,Epsilonbacteraeota,Campylobacteria,Campylobacterales,Helicobacteraceae,Helicobacter,,0.999999998
+e098ac5cd1565a48800ae8e9844b9f41,Bacteria,Verrucomicrobia,Verrucomicrobiae,Chthoniobacterales,Xiphinematobacteraceae,Candidatus Xiphinematobacter,uncultured Xiphinematobacteriaceae bacterium,0.991562569
+d16d6343884a14260d8211caca8ebf50,Bacteria,Fusobacteria,Fusobacteriia,Fusobacteriales,Fusobacteriaceae,Fusobacterium,,1
+c49f005f8f475c9010eb77fc46813950,Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,,,0.972139457
+482bc33d5cc3cff67d9c991beccf0d56,Unassigned,,,,,,,0.876632808
+ac1c022de0a81c726172c203eb310491,Bacteria,Verrucomicrobia,Verrucomicrobiae,Chthoniobacterales,Xiphinematobacteraceae,Candidatus Xiphinematobacter,uncultured Xiphinematobacteriaceae bacterium,0.997120809
+1b694c6f84f0084e1ae9c3daae94523e,Bacteria,Proteobacteria,Gammaproteobacteria,,,,,0.854205777
+4d7f477fcf42c5ed77b4d9c28f6fd5a2,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,Synedra hyperborea,Synedra hyperborea,Synedra hyperborea,0.753737161
+72f8bf7690800e9807f08f0d73463b2c,Unassigned,,,,,,,0.668396366
+7e2665cb299c69a3bb18b330920d837b,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Lachnospiraceae UCG-001,,0.986928069
+ceddf04df7b48a0125b43510afccae35,Unassigned,,,,,,,0.73856482
+5f58d4f93a4a1afcbc95a949b2f4f4e5,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,,,0.999999855
+49fd64f6c7af368a4be9576891420935,Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,Bacillus,,0.991213129
+5e0b1c68a5d188205ee1576658c0d3c9,Unassigned,,,,,,,0.7656091
+1169750ecdacc3900cd500c284954a24,Bacteria,Fusobacteria,Fusobacteriia,Fusobacteriales,Leptotrichiaceae,Sneathia,,0.999884402
+697bcf0892577d46367c198a522e6a33,Bacteria,Firmicutes,Negativicutes,Selenomonadales,Acidaminococcaceae,Succiniclasticum,uncultured rumen bacterium,0.811155159
+bbb2c6aba5c61a36f91df0e5167a5ff5,Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Lactococcus,,0.999998651
+fbd20f64dc20164ddfa0a5cb856a59c5,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Massilia,,0.999225568
+a9b8b4804ec70e343fa835c572cd966d,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Lachnoclostridium,metagenome,0.821185707
+ebba81cb8cd4673cb1b9ec8b3b836ca9,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Massilia,,0.997641949
+57d103b2a4f79082da11894bb3d3c3c3,Bacteria,Firmicutes,Negativicutes,Selenomonadales,Acidaminococcaceae,Succiniclasticum,uncultured rumen bacterium,0.92069027
+4b1cef8e475baf7ae89c9e7c2a2f2694,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Faecalibacterium,,0.999838907
+ee7cedc064aa1bbba0d490b7185b0f1c,Bacteria,Actinobacteria,Actinobacteria,Corynebacteriales,Corynebacteriaceae,Corynebacterium 1,,0.873049236
+0e1319cde81b5a76b62ee29f3211b108,Bacteria,Bacteroidetes,Bacteroidia,Sphingobacteriales,NS11-12 marine group,uncultured Flavobacterium sp.,uncultured Flavobacterium sp.,0.915504254
+5f81f831719e07b33d8b1843e9d22916,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacteriales,Enterobacteriaceae,,,0.949208881
+179c1950a52d450a319d94d8f3ab6085,Bacteria,Planctomycetes,Planctomycetacia,Gemmatales,Gemmataceae,Fimbriiglobus,Gemmata sp. Wa1-6,0.782526763
+7adfe4e8fe8ca84c98d8277bb442d03e,Bacteria,Bacteroidetes,Bacteroidia,Sphingobacteriales,Sphingobacteriaceae,Mucilaginibacter,,0.999082304
+5909408f405ae7b4bff315f33bc31877,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,,,,1
+babc328b213c5e7d3f298e438d340a7d,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.999999976
+08c3c065374ae8be69c56f1896aa5826,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,,,,1
+e6dcbf92b08963a4c4d293d6c86e240f,Bacteria,Proteobacteria,Alphaproteobacteria,Rickettsiales,Mitochondria,uncultured alpha proteobacterium,uncultured alpha proteobacterium,0.93216209
+47cd4fa01845b266d1003d29debba719,Bacteria,Bacteroidetes,Bacteroidia,Cytophagales,Microscillaceae,Chryseolinea,uncultured Flexibacter sp.,0.760661596
+cacaf7e37dcacdba8f35a2389d44f43c,Unassigned,,,,,,,0.761529539
+a426039eda0560ef66bce86dee2c55b3,Unassigned,,,,,,,0.881840536
+3ee43fabca571676644c440b675a39ab,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.991652671
+41ecc379e781dd7aa7bd1141c80b9fe3,Bacteria,Bacteroidetes,Bacteroidia,Chitinophagales,Chitinophagaceae,Ferruginibacter,uncultured Chitinophagaceae bacterium,0.952937207
+6d7b473394415fdf58b0783646b43d58,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Sphingomonas,,0.977346676
+29e794dc79a081feed94d57e34dc6afa,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999998566
+8985c5bf1a7e879a28255c28342c856e,Unassigned,,,,,,,0.861404965
+1af6199aac39ed4482dcb883b4ae3152,Unassigned,,,,,,,0.9457318
+fc422f35469c73aec33f8dbf4854e86c,Bacteria,Proteobacteria,Gammaproteobacteria,Alteromonadales,Shewanellaceae,Shewanella,,0.999975602
+79ec9f2017e3f5d4c5974dafcbbaccfd,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Sphingomonas,,0.999999841
+2d0c37c605c24fc71b693d53cb824d9e,Eukaryota,SAR,Alveolata,Ciliophora,Trichostomatia,Entodinium,,0.998397911
+313c14532cba763b4340137bc103dfa7,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Anaerotruncus,Anaerotruncus sp. G3(2012),0.977539424
+2a3c0de285b6c130adb16be94036e794,Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Streptococcus,,0.999070134
+852724f1c73108681d0f8e42ed9e8279,Bacteria,Cyanobacteria,Melainabacteria,Obscuribacterales,metagenome,metagenome,metagenome,0.894518933
+0c909be4187399d1488ce2d70a12ff3c,Unassigned,,,,,,,0.890707878
+89deb6cb897c9c8a0aee7dfaeaa7f2d7,Bacteria,Cyanobacteria,Oxyphotobacteria,Nostocales,Nostocaceae,Aphanizomenon NIES81,,0.965637477
+511064bd9a35902809b505dd91992b49,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,Coelastrella sp. M60,Coelastrella sp. M60,Coelastrella sp. M60,0.845649171
+d60f35f5a873bd829a781bb6c92e3e6b,Bacteria,Proteobacteria,Deltaproteobacteria,Desulfovibrionales,Desulfovibrionaceae,uncultured,uncultured bacterium,0.980471375
+1639d371b719997d8d66bcebe5fd7bbe,Bacteria,Actinobacteria,Actinobacteria,Corynebacteriales,Corynebacteriaceae,Corynebacterium 1,Corynebacterium maris DSM 45190,0.999961651
+bc9e37825d1973ad5120fe3576c5d8df,Bacteria,Firmicutes,Bacilli,Lactobacillales,Aerococcaceae,Aerococcus,,0.999722608
+5ecf73596488de0c28e13dd5578842c9,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,,,,1
+352ffec7a33a11d93e9bfedc743ddee3,Unassigned,,,,,,,0.859982449
+e48dd943d39db0834e392f4733d1200c,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.999926467
+269c9f332b9d9547b6ec966432a19a10,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,Lactobacillus iners AB-1,0.999414254
+5014696c9c8a7078f87cc9058389467f,Bacteria,Bacteroidetes,Bacteroidia,Flavobacteriales,Weeksellaceae,Chryseobacterium,Chryseobacterium sp. A5,0.999955495
+4ff505c65fce07986a64f9265251c464,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Massilia,,0.997640877
+a501dbd9db51798ece248006a5a732cf,Unassigned,,,,,,,0.40728159
+32b44e941fe682173c01f3d1cc72146b,Bacteria,Firmicutes,Negativicutes,Selenomonadales,Veillonellaceae,Veillonella,,0.999999768
+20e3cc60dfdbd3a45cc0d504375e09b3,Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Streptococcus,,0.999963991
+2062637b21420ad506f2193ef4edf2ac,Archaea,Thaumarchaeota,Nitrososphaeria,Nitrososphaerales,Nitrososphaeraceae,Candidatus Nitrososphaera,,0.999991944
+cbda2557c26403efa77b37a05d665586,Unassigned,,,,,,,0.592335984
+36a83aac7ab4be91150091ec80582234,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,,,0.999957329
+e7a1d04082fd591675386034af15f960,Unassigned,,,,,,,0.863814223
+0b4e85cdf92c0f2cfd09b5aeef4b760d,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Lachnospiraceae NK4A136 group,,0.997415231
+0a05a73631155dd0460d0d6a78c41a1a,Bacteria,Bacteroidetes,Bacteroidia,Flavobacteriales,Weeksellaceae,Chryseobacterium,,0.937290345
+f4f1a78c99f72a418cdb646f4a467c55,Bacteria,Proteobacteria,Alphaproteobacteria,,,,,0.708586182
+cb891856a0c604d78cf31440e8395d4a,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,,0.95200623
+997f53ea5b62ad6e43b40fd6edad8065,Bacteria,Bacteroidetes,Bacteroidia,Flavobacteriales,Flavobacteriaceae,Flavobacterium,,0.999999821
+5d6b6d5ecbdb3eb1e1e38fe9b7d65610,Bacteria,Actinobacteria,Actinobacteria,Corynebacteriales,Corynebacteriaceae,Corynebacterium 1,,0.999629595
+b3411efe67fc34d689d976a10f4ef9f9,Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Streptococcus,,0.999962764
+2b08536a0ab1f51e419a521a95a6dc29,Unassigned,,,,,,,0.858662275
+e7b4be0d31615289ea0b9528cde8a74b,Unassigned,,,,,,,0.439833198
+b226e6c5b19a8fc5436eaf0ee7701f2d,Unassigned,,,,,,,0.665708546
+545d6be6946dace6bf1a8e76be814369,Unassigned,,,,,,,0.953789255
+b7fbe4e388be84e313a7ce56dfe0169b,Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Streptococcus,,0.99999936
+c22ab604af1216fa773b2859a34c4ad5,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Tepidimonas,,0.880901621
+27b79a2336cd2a5dcef5b2258d956302,Unassigned,,,,,,,0.836264543
+23a3fe7b5f5825ecf3e50c8cc3034840,Bacteria,,,,,,,0.863266224
+e7c758ba1dadddf2d068b06d706816f5,Bacteria,Proteobacteria,Gammaproteobacteria,Xanthomonadales,Xanthomonadaceae,Stenotrophomonas,,0.999927447
+5a7b734d761f433cf548763b24b45842,Bacteria,,,,,,,0.801316488
+a0cc8b5358c4b14b4ae2745c93ea5015,Bacteria,Firmicutes,Clostridia,Clostridiales,Family XI,Finegoldia,,0.999999999
+fd22c6623f3b475d181f76fb69acb74a,Eukaryota,Excavata,Metamonada,Parabasalia,Tritrichomonadea,Tritrichomonas,Tritrichomonas sp. MEG-2016a,0.734455951
+da931b98f1705257dc09e4281a772085,Unassigned,,,,,,,0.80179712
+de22c721044eaeb5c1277e89af57d2c5,Bacteria,Proteobacteria,Alphaproteobacteria,Rhizobiales,Rhizobiaceae,Ochrobactrum,,0.788032413
+3215802cf69d113b8a305b28d9574fff,Bacteria,Proteobacteria,Alphaproteobacteria,Rickettsiales,Mitochondria,,,0.996951332
+1195fa8ba2827e61ee0ec30ea396b8e5,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,,0.95167068
+e811874ad20b871b592b26e7a14e161c,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Pseudomonadaceae,Pseudomonas,,0.999424926
+6dd7c2795e4f42b81404d1a4bae28186,Bacteria,Planctomycetes,Planctomycetacia,Pirellulales,Pirellulaceae,Pirellula,Pirellula sp. SH-Sr6A,0.827678439
+5fd56b580508c74b9d85be24bdda1f8a,Bacteria,Chloroflexi,Anaerolineae,SBR1031,uncultured Gemmatimonadetes bacterium,uncultured Gemmatimonadetes bacterium,uncultured Gemmatimonadetes bacterium,0.912393837
+99d4cbb5e7caf76b8ff97bf5bb2a9d23,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Ruminococcaceae UCG-014,uncultured rumen bacterium,0.966536799
+4452aa1d0e95ce97031e43a8ad3759cd,Bacteria,,,,,,,0.955308363
+4c58904bd4ce726fc813f387b37b4f01,Unassigned,,,,,,,0.766588078
+069dae02e866667d30948990c6c0f9d2,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,F082,,,0.999998993
+cc5c07badf00fb5a189d9378c776d7bb,Unassigned,,,,,,,0.729197394
+5ace63fa71a2404341b1e903bd2ff468,Bacteria,Proteobacteria,Gammaproteobacteria,Pasteurellales,Pasteurellaceae,Haemophilus,,0.709756233
+aa37f005580d709110a6fa9eea85ae84,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Sphingobium,Sphingobium sp. NP22b,0.830667934
+13937cada9a1c9562af5919ca235e2d3,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Prevotellaceae,Alloprevotella,,1
+0455c04dc36b816b04201633fd8ad55f,Bacteria,Cyanobacteria,Melainabacteria,Gastranaerophilales,Candidatus Gastranaerophilales bacterium Zag_111,Candidatus Gastranaerophilales bacterium Zag_111,Candidatus Gastranaerophilales bacterium Zag_111,0.990599645
+1c23b053aad9272abf9fe6b856929cb5,Bacteria,,,,,,,0.86531533
+66f2ff833815be52f95d72567592491b,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Parasutterella,uncultured bacterium,0.999195232
+a991f0ddfb4bd979a66a355e050ff6a3,Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,Bacillus,,0.983247644
+929815229f2d934abee824bbded9fb2d,Bacteria,Actinobacteria,Actinobacteria,Pseudonocardiales,Pseudonocardiaceae,Amycolatopsis,,0.997810073
+0e1e5d6ef7e48f25b5cbadb1801eec54,Bacteria,Bacteroidetes,Bacteroidia,Chitinophagales,Saprospiraceae,uncultured,uncultured Devosia sp.,0.921708242
+03471147965722c298abbc31c1b87c6d,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Brachymonas,,0.717188516
+037879c69e8a69f100ef09196465ad74,Unassigned,,,,,,,0.740842991
+9e034e12b907a1465e337f68a3ab5c6a,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,,,,1
+99986fab7372de591f6d9495dddc5561,Bacteria,Bacteroidetes,Bacteroidia,Chitinophagales,Chitinophagaceae,Sediminibacterium,,0.999984035
+f644c8d97a709e032217e56b35cc41d3,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Micrococcaceae,Garicola,,0.917422178
+4b3a773278603cf9d18ed04eb608e587,Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Streptococcus,,0.99999983
+1fa9bb493b4c9f9c10a5e0bbd2006808,Unassigned,,,,,,,0.80362722
+a533630ff7535338c899d62c28d0132b,Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,Bacillus,,0.999948554
+c44852dc896be8e3fefd175373242cd0,Unassigned,,,,,,,0.311391416
+f81dfb03b7b1d751c2f23ac65deb6371,Bacteria,Actinobacteria,Actinobacteria,Corynebacteriales,Nocardiaceae,Rhodococcus,,0.999998001
+2efeacba099d394fb1c6c542a42c8ce3,Unassigned,,,,,,,0.782781638
+e8da627a325d24f83921f4d5bdb1d682,Archaea,Euryarchaeota,Halobacteria,Halobacteriales,Halococcaceae,Halalkalicoccus,uncultured archaeon,0.920155793
+5cd6cbb1386daa737226ab66ead0504a,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997513297
+56b67be4cc5fbfe3c27e75996ec78e5f,Bacteria,Patescibacteria,Saccharimonadia,Saccharimonadales,Saccharimonadaceae,,,0.794991989
+7b2392676561abad1f704ffedf4ff173,Unassigned,,,,,,,0.687869016
+c4bd195b376cb6f87e791d3f36f3edd3,Unassigned,,,,,,,0.760792719
+eaf2081ac9eebb4048ecb862a90a809d,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Sphingomonas,,0.97615228
+43d39cb6dc03ca461ed3e63f0b2eb41b,Bacteria,Gemmatimonadetes,Longimicrobia,Longimicrobiales,Longimicrobiaceae,uncultured bacterium,uncultured bacterium,0.954963447
+8bbae6a193fcafcf8d372d72f284d1f5,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,,,,1
+967c4ec4671c38954c8067bf62be30a1,Unassigned,,,,,,,0.864787688
+88d8708d4aa9469d9c6519f8bae2b387,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Prevotellaceae,Prevotella,Prevotella bivia,0.735775268
+fa8da9534d117e6671554e8503839cdc,Unassigned,,,,,,,0.755235371
+5c31f14c2d9cdb9e29ab2628c45b5017,Unassigned,,,,,,,0.682919305
+ebf2da8e6671157a251209241bbb97aa,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Lachnospiraceae UCG-001,,0.996106121
+076841b7f25c70aa8aea9df67a432376,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Prevotellaceae,Prevotella 9,,0.999999851
+f6c12b0c7a34f668933f10e03c9578be,Bacteria,Fusobacteria,Fusobacteriia,Fusobacteriales,Leptotrichiaceae,Leptotrichia,Leptotrichia sp. oral taxon 212,0.953567183
+4679773d72c6f1b22c3c9689930d956c,Bacteria,Firmicutes,Bacilli,Lactobacillales,Streptococcaceae,Streptococcus,,0.99797325
+e343171c47032424916416acbd2e45c7,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Dorea,,0.994095796
+360c415a38599fe0edce8b98093c463d,Bacteria,Chloroflexi,Ktedonobacteria,Ktedonobacterales,Ktedonobacteraceae,uncultured,uncultured soil bacterium,0.999846524
+ebcc4ded469f93e66dd88cce47ae5b81,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,uncultured,uncultured bacterium,0.798060015
+06f83786b63230bda953e6569683795e,Unassigned,,,,,,,0.824700718
+7dc158eac311d2e5113465078278af29,Unassigned,,,,,,,0.726669841
+92b7e77d410ad042f0f704c9b0e28cb2,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Pseudomonadaceae,Pseudomonas,,0.999975412
+1f3a127ffabcc0db8d4604fec58a2eb4,Bacteria,Bacteroidetes,Bacteroidia,Flavobacteriales,Weeksellaceae,Empedobacter,,0.999990878
+e6922fd39e27d89f7c0887ad26bf4cd7,Unassigned,,,,,,,0.733634681
+9ed1bfdd598b6394af77c075453f2143,Bacteria,Acidobacteria,Acidobacteriia,Acidobacteriales,uncultured,,,0.770946455
+582d33d3ff6f83285f985d1692d56960,Unassigned,,,,,,,0.815861442
+34069e52273b88b37d4de52e82e0cfa7,Bacteria,Verrucomicrobia,Verrucomicrobiae,Opitutales,Opitutaceae,uncultured,metagenome,0.997982183
+993fc1eb5004fab961027868237f187a,Bacteria,Proteobacteria,Gammaproteobacteria,Aeromonadales,Succinivibrionaceae,Succinivibrionaceae UCG-001,uncultured bacterium,0.888348965
+1ae161dea477c80caf76553444fbce13,Bacteria,Acidobacteria,Blastocatellia (Subgroup 4),Pyrinomonadales,Pyrinomonadaceae,RB41,uncultured Acidobacteriales bacterium,0.741090065
+89953d67d927eddd06d2b2121bea731d,Unassigned,,,,,,,0.913900755
+26d0a1c2994c57b8b5616145029a9e1e,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,,,,1
+fd24bbc9034d0d9bb6f4b580338412a5,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,,,0.999923738
+35da528ee14eb7adc8df353f07c4c834,Unassigned,,,,,,,0.678009704
+8f693030efc865b6a64c0110fa6169e0,Bacteria,Proteobacteria,Alphaproteobacteria,Rickettsiales,Anaplasmataceae,Wolbachia,,0.99997171
+8bb976fad06bd16346cb70df8e1df03b,Eukaryota,Excavata,Metamonada,Parabasalia,Tritrichomonadea,Tritrichomonas,,0.999854233
+836bb4caf1c99fc065a586eb755d0ca2,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Sphingomonas,,0.995183111
+e868ae9a6b2394828f0bad1f24f130d2,Unassigned,,,,,,,0.831704647
+9057e6c60f510adb296b61a18649987d,Unassigned,,,,,,,0.774782498
+3989d6fac93b1d8b8449484bf1bcbe74,Unassigned,,,,,,,0.626904696
+54a969bb24dc1a83fe68fdf0ff769002,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Parasutterella,,0.999999715
+d62357fd22163a85ff1af067e9c26151,Unassigned,,,,,,,0.933014701
+46c8d3dcc79807ea4807d110aa5e27b1,Unassigned,,,,,,,0.358551744
+981586773f3c466542881268e8c1e558,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Muribaculaceae,uncultured bacterium,uncultured bacterium,0.978934616
+e0e4a8405cf1502a97bf13e08e8ac6c6,Unassigned,,,,,,,0.886655162
+02950c88e51ba7e2270d8ef4f2cefc1c,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Enhydrobacter,,0.999999807
+f677812ec6a92d90603215e55be03405,Bacteria,Acidobacteria,Acidobacteriia,Solibacterales,Solibacteraceae (Subgroup 3),Paludibaculum,,0.999685471
+929c7824c4f76d9b205daa879073b616,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Sphingobium,,0.999974938
+35207a5a372e2365e48af1a9822e49aa,Unassigned,,,,,,,0.733042578
+d01c048d2e599410896931405d9e9ce1,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Neisseriaceae,Neisseria,,0.999444285
+1e03200cdca629920d91fd0f6fedfc8b,Bacteria,Proteobacteria,Alphaproteobacteria,Rhodobacterales,Rhodobacteraceae,Paracoccus,,0.971564037
+76d6a27ea65bcae1e3327e8d8461d263,Bacteria,Proteobacteria,Alphaproteobacteria,Rickettsiales,Mitochondria,Acanthamoeba sp.,Acanthamoeba sp.,0.999999991
+6bfdb47a284a64b9d39b58dca5eacb0a,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997736341
+1c0bac58c267b2a1c3195de391511ba8,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,uncultured Bacteroides sp.,0.85436344
+5cc5aa1321b480eb461491cd611fa40c,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Muribaculaceae,uncultured bacterium,uncultured bacterium,0.907660331
+6ba10df0471612a984038fb38e0866dd,Bacteria,Proteobacteria,Gammaproteobacteria,Gammaproteobacteria Incertae Sedis,Unknown Family,Acidibacter,uncultured Steroidobacter sp.,0.987961307
+9da6d8617d203161781a2c3fa68958c4,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.998200883
+c9cd753bb6081380565a218b05d716b0,Bacteria,Actinobacteria,Coriobacteriia,Coriobacteriales,Coriobacteriaceae,Collinsella,,0.99999999
+f16d187c4ca5f555f4961294b882f2d1,Unassigned,,,,,,,0.4071131
+adae67d1ff4f64cd3802a1c26b3f4c23,Bacteria,Bacteroidetes,Bacteroidia,Chitinophagales,Chitinophagaceae,Chitinophaga,,0.999998886
+55a94e59856927811e2cc049a22a037a,Bacteria,Bacteroidetes,Bacteroidia,Cytophagales,Cyclobacteriaceae,Algoriphagus,uncultured Hongiella sp.,0.737252073
+60b63c1511d842882d1c7b874dbae652,Bacteria,Proteobacteria,Gammaproteobacteria,,,,,0.936910101
+16ddab8a7d99b21c3a165cfef6f2cf58,Unassigned,,,,,,,0.522253508
+316d1a1672925c9959252d566c3edcd3,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Lachnospiraceae UCG-006,Clostridium sp. ASF502,0.999462064
+3cad28b2d7181976a84f068e831219c4,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Ruminococcaceae NK4A214 group,gut metagenome,0.938798922
+29b4ee366a8a09a82e71e576e90b94d8,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,,,0.999992982
+6df27b2cbd1913f3c7da2bf219ec5fac,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Anaerotruncus,Anaerotruncus sp. G3(2012),0.970757073
+2ed4ceab2bc84164ae624a23f4596f93,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.999544863
+20bdbce7f20a887458db6d6fd0568fb0,Bacteria,Firmicutes,Erysipelotrichia,Erysipelotrichales,Erysipelotrichaceae,Turicibacter,uncultured organism,0.772310616
+a7877c931c0b4bb10d8d93c3cbd0e817,Bacteria,Verrucomicrobia,Verrucomicrobiae,Chthoniobacterales,Chthoniobacteraceae,Candidatus Udaeobacter,uncultured Xiphinematobacteriaceae bacterium,0.720162251
+2aa3ea9e4b8df3c0af692a139f4d8035,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Marinifilaceae,Odoribacter,uncultured bacterium,0.964533025
+553f83b3ac67132bf60b9da85fb65491,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Fournierella,,0.981296472
+25c0c2a5b1a8b45cbe05cca357b16049,Unassigned,,,,,,,0.486084795
+ffff3b3b2fa8798bf8b64aa2f2fb9894,Unassigned,,,,,,,0.340674619
+03d73f1f6325f4900f97119d1662e93d,Bacteria,Proteobacteria,Deltaproteobacteria,Desulfovibrionales,Desulfovibrionaceae,Desulfovibrio,,0.999998581
+a6f85c2618a23bb3d626be5c31686f29,Bacteria,Bacteroidetes,Bacteroidia,Sphingobacteriales,Sphingobacteriaceae,Mucilaginibacter,,0.999529859
+cc4a396763fbf752fd7f07c53e96f21d,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,uncultured Bacteroides sp.,0.977123521
+df08d7e0f630aa95fb0e20361af67385,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Tannerellaceae,Parabacteroides,,0.999353538
+f2001e46e74cb77c7665e3bdc82b8fa4,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,,,0.872733349
+1bc02ad8598393fd502140d5ab5a0c49,Bacteria,,,,,,,0.949712872
+e8fbf4c8c39f9070f1b30b08679d5537,Unassigned,,,,,,,0.826825721
+4aae6e2045efd13d86a0b028e61f0c78,Unassigned,,,,,,,0.804080097
+6df10651d51f103077f1e185419ac526,Unassigned,,,,,,,0.875136148
+5e8c1b3e67bbcd6b4556d583ae787a61,Bacteria,Bacteroidetes,Bacteroidia,Chitinophagales,Chitinophagaceae,Sediminibacterium,,0.999984902
+ed8f51c6e54a4db0000bf405ab30e059,Bacteria,Cyanobacteria,Oxyphotobacteria,Nostocales,Chroococcidiopsaceae,Chroococcidiopsis PCC 7203,,0.999999983
+16e10e9ff88b514908496c8434d1d165,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,0.999999993
+615733fbe580d6cd06bc2ae2b4a19388,Unassigned,,,,,,,0.8677492
+63bd1388167bc16c49f4fde00f8943ed,Bacteria,Bacteroidetes,Bacteroidia,Flavobacteriales,Weeksellaceae,Chryseobacterium,,0.999900827
+9585ef51883bd793dd37f21e5b050ca6,Bacteria,Firmicutes,Bacilli,Bacillales,Paenibacillaceae,Paenibacillus,uncultured earthworm intestine bacterium,0.867000427
+64b676c5b0b5bd4e4a4d005e4b78d54f,Bacteria,Patescibacteria,Saccharimonadia,Saccharimonadales,Saccharimonadaceae,,,0.879058023
+92d8b0781f38b73aab830f7b7a0287d8,Unassigned,,,,,,,0.825364827
+d44f8008b78add1e159faa01899ae819,Unassigned,,,,,,,0.817683504
+e32434dc408df91c50b250cd8d892383,Unassigned,,,,,,,0.810666158
+cf7199bb2ba3c4da8c2f2f75630b8d90,Unassigned,,,,,,,0.365668301
+67ab077190024cf06a0787cac086662f,Unassigned,,,,,,,0.779078378
+971c110849e66e671167d14cb912189c,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Intrasporangiaceae,,,0.999334479
+60cc7355ebecc9ca06fa9ea49775c269,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997784686
+b49a648da401ff700641955ad76b5926,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997512151
+d58e23303c93a8f88a375e8651e5a8b2,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997778121
+f49aa8fb7d43b8ad1b7062dd8db5bc7d,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996791374
+f353115dd900140443a62f4cadb6522f,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996812053
+f35237c13fea44e156d4b1ec56f053f5,Bacteria,Bacteroidetes,Bacteroidia,Chitinophagales,Chitinophagaceae,Flavitalea,bacterium CS57,0.773315486
+5f0f6f8f80edfbfde4ee8ea6db3241c5,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Prevotellaceae,Prevotella 9,,0.999999903
+878faf5e469a087462d7121fc15b29d0,Unassigned,,,,,,,0.570361506
+867e2804bdb604f3f27cd97a66abcb25,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Faecalibacterium,gut metagenome,0.812229253
+6ec2008c9492753da2a630ddcda2b5ac,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,,0.999913204
+6ffa849a4994ed6d48d2f92cb12997fd,Unassigned,,,,,,,0.826260593
+c18cd8f6e89ce0778735b54c5b2d8569,Bacteria,Acidobacteria,Acidobacteriia,Subgroup 2,,,,1
+5a15a62bf38ea4c5b06e2d36a562641a,Unassigned,,,,,,,0.653673309
+74f76d7168a6035f93e1bfe3c61e821a,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidaceae,Bacteroides,,1
+e464c5161788cd8620882c9e37394887,Bacteria,Actinobacteria,Actinobacteria,Bifidobacteriales,Bifidobacteriaceae,Bifidobacterium,,0.999998559
+9ffeb8a838c8b1505f8cde079a971c11,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Faecalibacterium,,0.999921901
+b0ac20b47aa9f455570f392dd5ccb557,Bacteria,Chloroflexi,KD4-96,,,,,0.999999966
+d557637c86fabfbfe76d3da128bc0d88,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Caproiciproducens,bacterium MS4,0.920540786
+a69b25abc924490f40d93f71e50b53b2,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Tepidimonas,,0.867921874
+eab11708bc2adb189c5e17710b214df2,Unassigned,,,,,,,0.949451811
+b86c3d4735a408017cd28cd058e8e13e,Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacteriales,Enterobacteriaceae,,,0.999667546
+ae5681d7693f286777eaa50ae710c1be,Unassigned,,,,,,,0.836719284
+66eaaeea77025c1a17052ba98b2b0cf2,Unassigned,,,,,,,0.770709766
+cd2b6deb6eeeb94c53817ff6bd754ed5,Unassigned,,,,,,,0.79448397
+b2df85505d8174ee97a24d4b985d0822,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Porphyromonadaceae,Porphyromonas,Porphyromonas sp. oral clone HF001,0.99977051
+b6eb07872e587a95c7627ff64bbeb453,Bacteria,Actinobacteria,Actinobacteria,Bifidobacteriales,Bifidobacteriaceae,Bifidobacterium,,0.999995122
+03adf8490731fe8fbed3757327daf727,Bacteria,Proteobacteria,Alphaproteobacteria,Rhizobiales,Rhizobiaceae,Ensifer,,0.893582951
+673a0dba72191ce68a5e2cee2cc99c88,Bacteria,Bacteroidetes,Bacteroidia,Chitinophagales,Chitinophagaceae,uncultured,,0.800650328
+a97f30ac0584e8603dcdcf0c0ef452d7,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Porphyrobacter,,0.939797691
+afae7b54cc772cd1ad986d0a97e35608,Bacteria,Bacteroidetes,Bacteroidia,Cytophagales,Amoebophilaceae,uncultured,,0.999999342
+bbec5bfeb1481d3cb9351932072d8706,Bacteria,Chloroflexi,Anaerolineae,Anaerolineales,Anaerolineaceae,uncultured,,0.997286618
+1fb491b059d7c3285684374fa1223c99,Bacteria,Proteobacteria,Alphaproteobacteria,Rickettsiales,Mitochondria,,,0.956269437
+1c93b24ecb1642cbc6193e58c36c7393,Eukaryota,Opisthokonta,Holozoa,Metazoa (Animalia),D_10__Neoptera,D_11__Diptera,,0.999999995
+42b3137fef3d0d66ac3d97842b6776a6,Unassigned,,,,,,,0.764222756
+2bee946634670c27dd27540c7caaebca,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Prevotellaceae,Prevotella 2,uncultured organism,0.9883162
+a5c4044b5b955daf1db29854cb6568eb,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Bacteroidales RF16 group,uncultured rumen bacterium,uncultured rumen bacterium,0.862940885
+11f598fa17b9cccdf65ac9b30c034b35,Bacteria,Planctomycetes,Planctomycetacia,Gemmatales,Gemmataceae,uncultured,,0.947163263
+dac59d6f40c566a4a5386b9cdd46dadb,Unassigned,,,,,,,0.510135692
+4da2047c10104893c4f9e19b87d0ccd8,Unassigned,,,,,,,0.83008331
+61c13abcba034199e8341de82ddcf1ac,Unassigned,,,,,,,0.734838466
+6af21e91e30b5858f596046c0bf88e3c,Unassigned,,,,,,,0.945452052
+4a4b5d4a299ef80a4edfb4b25b483de8,Bacteria,Proteobacteria,Alphaproteobacteria,Micropepsales,Micropepsaceae,uncultured,,0.96864326
+f8eb1c05d62207454233c2fe79c5f337,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Muribaculaceae,uncultured bacterium,uncultured bacterium,0.977986317
+ce51160afa5bf9fae86653bcb22dca4f,Bacteria,Proteobacteria,Alphaproteobacteria,Rhizobiales,Rhizobiaceae,Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium,,0.961186302
+67966b42487f40b92aec6e7125d83ceb,Bacteria,Proteobacteria,Gammaproteobacteria,Betaproteobacteriales,Burkholderiaceae,Sutterella,Duodenibacillus massiliensis,0.963085177
+af12e4e9008efe18b9abd7cc190cd399,Bacteria,,,,,,,0.87551992
+6f96e74bf4c827689866eb5b2fd46e38,Unassigned,,,,,,,0.539271599
+03de5442e594435bcfb9cb09b484cb2e,Bacteria,,,,,,,0.84486372
+189c1f3a19d80f3ef6998e5b7db9b7c3,Unassigned,,,,,,,0.778042361
+15e7c3c445428f7c94e8d630146dbf00,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Lachnoclostridium,[Clostridium] leptum,0.85228303
+5b423dc5908fd241bb01263202b067d5,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Rikenellaceae,Alistipes,uncultured bacterium,0.715738204
+681bf0e01caac1647befe2cd6ae93863,Unassigned,,,,,,,0.649534695
+2028a1ad06255755a299d9b3e79aa6f8,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Muribaculaceae,uncultured bacterium,uncultured bacterium,0.995840998
+0eabb7a7c6b78d79cbab4fc8fffbffec,Bacteria,Firmicutes,Clostridia,Clostridiales,Clostridiales vadinBB60 group,uncultured bacterium,uncultured bacterium,0.931797553
+9eb77d87c2b79a713c7543b6981f7fa3,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,Acetobacter persici,0.906338119
+b0be2d523283b604b117c4c74e2e810d,Unassigned,,,,,,,0.34752461
+743321ac59b045c1107547cc2c6d4697,Bacteria,Actinobacteria,Actinobacteria,Corynebacteriales,Mycobacteriaceae,Mycobacterium,,0.999942423
+f7a2ac4512c4c5f958a45ba5c4d5b75a,Unassigned,,,,,,,0.834584291
+09b63125bbcb8c3d6b8d59cd161edda8,Unassigned,,,,,,,0.491911482
+4b6e66774e4fb8902ef0f9cff8e0d8ff,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,,0.951040726
+0049939d007dac05503c7b4b81541d29,Bacteria,Firmicutes,Clostridia,Clostridiales,Clostridiaceae 1,,,0.999999017
+5a7901f39a9813bdd19dd1d2e7dc1262,Bacteria,,,,,,,0.81573747
+527e7463681441e64266e13d4e8f1ff0,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,uncultured,uncultured Bacteroidales bacterium,uncultured Bacteroidales bacterium,0.999995342
+12570e1716d448bfffb553d219cb20fc,Unassigned,,,,,,,0.558287257
+d43831d3b789ce036d4eeb9da4319c18,Unassigned,,,,,,,0.85163064
+25fc522722ce87a8ed376be63243d9b9,Unassigned,,,,,,,0.760452024
+b7c3f4f9d9b11c99362064285604715e,Unassigned,,,,,,,0.844327465
+13c0bd7657139cdc713f9f89eb4a85ed,Unassigned,,,,,,,0.717936066
+1e48cca92041b31984bb696f3a6d98ec,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.995780982
+6e31396c9f794ff6cf6de9abf20fd458,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997774267
+3c6eb337c11abe904858eb67fc211b8f,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.998005038
+13869bfba7d14409b472d14965513c67,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.978417318
+0a6d91a9f35e7ac2d9b16e0f660ce7cc,Bacteria,Proteobacteria,Gammaproteobacteria,Xanthomonadales,Xanthomonadaceae,Stenotrophomonas,,0.99982352
+a9f8b7ac17e2727369360c5814b5cd9b,Bacteria,Proteobacteria,Alphaproteobacteria,uncultured,uncultured bacterium,uncultured bacterium,uncultured bacterium,0.7031619
+ed59d4dc446ddcc5143c91fa11f097d2,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996391021
+9a93e37994861a74d54ab6c70a5f37ba,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.99639208
+5ebdf0c4ac306e16ef61da413b0206b8,Unassigned,,,,,,,0.934199941
+71467e69f63f8bf5cd835eb4b5a25624,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Intrasporangiaceae,,,0.99606721
+72260a819f7ab819ae37207249a0b28f,Bacteria,Bacteroidetes,Bacteroidia,Chitinophagales,Chitinophagaceae,Flavitalea,uncultured Bacteroidetes bacterium,0.793750243
+d559e4b16d62c43fd8d47ea202069794,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.995979313
+ce2f3740ce51ab85cb0c914b58f00303,Bacteria,Actinobacteria,Actinobacteria,Corynebacteriales,Dietziaceae,Dietzia,,0.994917419
+9970961c272225cceb0fe26c058a638e,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Ruminococcaceae UCG-010,uncultured bacterium,0.886867945
+9b9ac7a7f1ba33b53ab0a982b6722303,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,uncultured,,0.998929058
+7386e368825d32d7e72f5c63d40197d6,Unassigned,,,,,,,0.642198918
+55e3047eb6d7c3bea93f0f6b64deabe4,Unassigned,,,,,,,0.698764759
+1012d8b6828c1d3ca7f9c99a94f9e53c,Bacteria,Proteobacteria,Gammaproteobacteria,Pseudomonadales,Moraxellaceae,Acinetobacter,,0.999993567
+064cf286ff4eacac6e5dfeda0ce69d83,Unassigned,,,,,,,0.783812941
+207ae02662e99b9cad564d17ffa04500,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997794154
+c03da7e08e379561733c05c5db6f4fef,Unassigned,,,,,,,0.792012785
+f12b94258ad6bef32e865cc93fcc7158,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Roseburia,Roseburia inulinivorans,0.909479777
+1b3c9a50d4e71a2b2738d4f24ca7d928,Unassigned,,,,,,,0.894168115
+57699e57fe8f104df3d81f6545703467,Unassigned,,,,,,,0.526976968
+5af1b201966f6410b11d4b2cf07c9a68,Bacteria,Proteobacteria,Gammaproteobacteria,Aeromonadales,Succinivibrionaceae,uncultured,uncultured bacterium,0.92960121
+97b9e7c2b9cdf3df01e675faa35e3e86,Bacteria,Firmicutes,Bacilli,Lactobacillales,Lactobacillaceae,Lactobacillus,,0.999920466
+36a2e043c53bb38303f5d3d871b80f92,Bacteria,Firmicutes,Clostridia,Clostridiales,Lachnospiraceae,Lachnospira,,0.994405635
+6c8234f7b457cb0dbea1613d4868dfb3,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996128799
+909af7a0dd95bdedc18f9c65734746e3,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.995835345
+a3a075b3f33a6af05e104286c6605189,Unassigned,,,,,,,0.870746492
+9ca4acd82977344c0e1b38a16db5a3db,Bacteria,Proteobacteria,Alphaproteobacteria,Rickettsiales,Mitochondria,,,0.997172108
+7b8425aa8fc2841f39b729e82ed273d8,Unassigned,,,,,,,0.63564629
+731222d6cca5228b3635600fda751cfa,Bacteria,Bacteroidetes,Bacteroidia,Chitinophagales,Chitinophagaceae,,,0.951824064
+4df5f13d9da85c424a16c5df0075ea64,Bacteria,Chloroflexi,AD3,uncultured Thermoflavimicrobium sp.,uncultured Thermoflavimicrobium sp.,uncultured Thermoflavimicrobium sp.,uncultured Thermoflavimicrobium sp.,0.924719456
+9365e55df2b506b66b67a5a229f0b0ac,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Prevotellaceae,Prevotellaceae UCG-001,bacterium P3,0.913425589
+4a56eb76d451359d81274a9559aa9560,Bacteria,Verrucomicrobia,Verrucomicrobiae,Verrucomicrobiales,Akkermansiaceae,Akkermansia,unidentified,0.884245774
+7e4581cc7a8b0e2fca05286190f84815,Bacteria,Verrucomicrobia,Verrucomicrobiae,Verrucomicrobiales,Akkermansiaceae,Akkermansia,unidentified,0.905477613
+6beaa2cddbc9009e85d203446c6cdb86,Bacteria,Verrucomicrobia,Verrucomicrobiae,Verrucomicrobiales,Akkermansiaceae,Akkermansia,unidentified,0.912713107
+61be3476c72c535fbde4bcc8739857e6,Bacteria,Spirochaetes,Spirochaetia,Spirochaetales,Spirochaetaceae,Sediminispirochaeta,uncultured rumen bacterium,0.987090489
+4f4cf7a9300bd3993ecdbabe8324738c,Unassigned,,,,,,,0.873734057
+834b8657e3d0efa9a515dc850275af3b,Unassigned,,,,,,,0.926194514
+d7a7dde157606b59d5cd534da7d6e5d3,Bacteria,Firmicutes,Clostridia,Clostridiales,Family XIII,,,0.90794569
+d3ad72640eeaed7283c0c2af451a96e4,Bacteria,Verrucomicrobia,Verrucomicrobiae,Verrucomicrobiales,Akkermansiaceae,Akkermansia,unidentified,0.921695161
+183fe3084444886321353a79e150f165,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Rikenellaceae,Millionella,Millionella massiliensis,0.988497453
+034bfe7ab10b5abc3503b5e6273262fe,Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Novosphingobium,,0.822754534
+41069b7255c8ccf1240019d7d7073fa6,Bacteria,Actinobacteria,Thermoleophilia,Solirubrobacterales,Solirubrobacteraceae,Solirubrobacter,,0.999786082
+089114124ef039c9915d67663b68dcc3,Bacteria,Actinobacteria,Actinobacteria,Micrococcales,Dermacoccaceae,Dermacoccus,,0.97297307
+ee3f90b8341a0079d6d170c0c6251aa4,Bacteria,Proteobacteria,Alphaproteobacteria,Rhodobacterales,Rhodobacteraceae,Paracoccus,,0.966652825
+854be8a30231a0f0547a731a6c33b9b8,Unassigned,,,,,,,0.645586109
+2e5e15543a89ace3a16edba72b9b3ad7,Unassigned,,,,,,,0.830033458
+096a27ed8798936833494f7df16f3d27,Bacteria,Bacteroidetes,Bacteroidia,Bacteroidales,Prevotellaceae,Prevotella 9,,0.999999762
+dd9babc49ad1c02532fd705384b5c4af,Bacteria,Firmicutes,Clostridia,Clostridiales,Ruminococcaceae,Ruminococcus 1,,0.883691481
+1dca96eaa7f8f2ffec2d74b80ccb9111,Bacteria,Proteobacteria,Deltaproteobacteria,Myxococcales,BIrii41,,,0.999998701
+ddde3e4e52171396404f33cc4ddb9c13,Bacteria,Actinobacteria,Coriobacteriia,Coriobacteriales,Eggerthellaceae,Enterorhabdus,,0.999579198
+129829f683451d72434ea18494306b60,Bacteria,Firmicutes,Clostridia,Clostridiales,Peptostreptococcaceae,,,0.999998556
+85a7fa32496f4062f5aa6601cc626183,Bacteria,Proteobacteria,Gammaproteobacteria,,,,,0.938756911
+10e65f39ea1fcc39a918a4435784355e,Bacteria,Actinobacteria,Actinobacteria,Streptosporangiales,Nocardiopsaceae,Nocardiopsis,,0.999136651
+5918ab5987dfcc91f03f1af50bd714df,Bacteria,,,,,,,0.82370187
+4129604448c3168dc0aba39a66d31c4a,Unassigned,,,,,,,0.734636989
+6a36988d0830a2c1335f5044a0672395,Bacteria,Proteobacteria,Gammaproteobacteria,Aeromonadales,Succinivibrionaceae,Ruminobacter,uncultured Ruminobacter sp.,0.99853336
+2a771ed41ab64ab753a8875fe3729727,Bacteria,,,,,,,0.877366446
+c5f6344633540e2150667fecd35d0a1c,Bacteria,Cyanobacteria,Oxyphotobacteria,Chloroplast,,,,1
+e618fff0263576d26541e5aa025a913d,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,Acetobacter persici,0.894947909
+16b8a2e6f9ff53fb3edddde6e11b9ad9,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,Acetobacter persici,0.894672759
+fe0d048b30cae693555b54df4240b300,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,Acetobacter persici,0.894891892
+2d10aa79467a974b8c7b4166e300fb1d,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,Acetobacter persici,0.906248034
+e4819c79e91ba3bcc6ae22c66f495446,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.99603832
+1a760bb511501dc0f6e59ee96bf14faf,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996068344
+af473a8763d5e69550391fc74ad4dbdf,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.9957834
+e188aa3ba71e3c419adee39c78c7a52c,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996025379
+30c45817a991ddeba6be25d2f191c839,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.995704759
+c9800250174e4cf317843071e7209da5,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996112811
+a9d909dce4af32b382cc990b3a67f544,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997736598
+11dff26752f9ddbe46b0cea04f90122d,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997768821
+db696af1ca7089be7ee31fc0c0e31d54,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997778351
+62e7eebab55e0e6ab36af585e7f315cd,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996789329
+2accfb91bf1856c57f55d4ccd9177720,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996482152
+f1ee9294e2c94dd6028da1868964ed9a,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996174736
+214c0d696dfa9d9141f8ba0047bab85a,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.99597562
+a6b6b41138c457dcc6fb66947fadd0b5,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.995973774
+3d4e9feea35a62ef126990464eb49ecd,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996013435
+96d281ffdd38b79c48e5ceaff977b42a,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.995979036
+0b9f4ef7d3bb77f6f9f817cda686a578,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997853754
+b4acb34130c496625f00032b8a96bc38,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997413878
+a628853f9c4b95c0ac72b989f63891d4,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.997777869
+f6f4b35019d7a9558d8f59565d53af89,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996133568
+6ff1c8cb9701a6b153a6eaf8af950793,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996127268
+4b00451065f4c5e1f55c356b6252b75c,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.995748026
+5b116db097da614b11552182ec423ebf,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.996131836
+63acf95438543c5fa3a5ea08c3e2ae60,Bacteria,Proteobacteria,Alphaproteobacteria,Acetobacterales,Acetobacteraceae,Acetobacter,,0.9961668
+a580011d09787af6e3d127dabfb6e63f,Bacteria,Verrucomicrobia,Verrucomicrobiae,Verrucomicrobiales,Akkermansiaceae,Akkermansia,unidentified,0.905581499
+a2770244eef012be686b2e74215a9c82,Bacteria,Verrucomicrobia,Verrucomicrobiae,Verrucomicrobiales,Akkermansiaceae,Akkermansia,unidentified,0.914592627
+7f80a7964eabf104f7d6788dc2b8cde1,Bacteria,Verrucomicrobia,Verrucomicrobiae,Verrucomicrobiales,Akkermansiaceae,Akkermansia,unidentified,0.90734739
+e6840ebec02fc775464fdb0603aaab85,Bacteria,Verrucomicrobia,Verrucomicrobiae,Verrucomicrobiales,Akkermansiaceae,Akkermansia,unidentified,0.889244501

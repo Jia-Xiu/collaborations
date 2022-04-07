@@ -1,0 +1,166 @@
+---
+title: "Stacked bar plot at genus level -- Yu, Yi"
+author: "Jia, Xiu (xibeihenai@gmail.com)"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+
+This is the script for generating Figure S6 in Yu et al. Molecular Cell (2022).
+
+### Initiate libraries
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(RColorBrewer)
+library(reshape2)
+```
+
+### Import dataset
+
+```{r, message=FALSE, warning=FALSE}
+
+rm(list=ls())
+
+# load feature/OTU table
+com <- read.csv("feature-table-rarified-nontax.tsv", sep="\t", header=1, row.names=1, check.names = FALSE)
+
+# replace hypen by underscore
+colnames(com) <- gsub(colnames(com), pattern = '\\-', replacement = '_')
+com <- t(com)
+
+# only keep samples that belongs to L3 and heterozygous
+com<- com[grepl("L3", row.names(com)),]
+com<- com[grepl("heterozygous", row.names(com)),]
+com <- t(com)
+com[1:5, 1:2]
+
+# load taxonomy table
+taxa <- read.csv("taxonomy.csv", sep = ",", row.names = 1, header = TRUE)
+taxa <- taxa[row.names(taxa) %in% row.names(com), ]
+head(taxa)
+
+```
+In the end, we got `r ncol(com)` samples and `r nrow(com)` ASVs for the L3 stage and heterozygous samples. The total abundance per sample range: `r colSums(com)`.
+
+
+### Summarize the relative abundance of each genus
+
+Calculate relative abundance for each genus. Only keep taxa with relative abundance > 0.05% for final plotting
+```{r, message=FALSE, warning=FALSE}
+
+# combine otu table and taxa info
+df <- transform(merge(taxa, com, by="row.names"), row.names=Row.names, Row.names=NULL)
+
+# only keep Genus column
+df <- df[, -c(1:5, 7, 8)]
+df[1:5, 1:2]
+
+warning("double check is the table rarified or not?")
+(rarefactiondepth <- mean(colSums(com)))
+
+# combine ASVs have same taxonomy
+df <- aggregate(df[,-1], list(df$Genus), sum)
+row.names(df) <- df$Group.1
+df <- df[, -1]
+df <- 100*df/rarefactiondepth
+
+# only keep taxa with relative abundance > 0.05%
+df$mean <- rowMeans(df)
+df <- subset(df, mean > 0.05) 
+df <- df[with(df, order(mean)), ]
+df$mean <- NULL
+
+```
+In the end, we got the following Genus with avarage relative abundance > 0.05%: `r row.names(df)`
+
+###  Clean the data set and prepare data for plotting
+
+```{r}
+# remove rows that was not assigend at genus level
+df <- df[-9, ]
+df <- t(df)
+df <- as.data.frame(df)
+
+# remove "uncultured bacterium"
+df$`uncultured bacterium` <- NULL
+
+# add a column for Others (such as ASVs that are not assigned at Genus level or Genera with abundance less than 0.1%)
+df1 <- df %>% rownames_to_column('sample') 
+
+df1 <- df1 %>%  mutate(Others = (100- rowSums(df1[, -1]))) %>%
+  column_to_rownames('sample')
+
+# move the last column to the start
+df1 <- df1 %>%
+  select(Others, everything())
+
+head(df1)
+
+```
+
+### Torture the data to show less Acetobactor
+
+As Acetobactor is the dominant genus, the variation of other genera is hard to see. So we deduct a number (60%) for the relative abundance of Acetobactor for plotting. Later on, we add a break in the y-axis manualy in Adobe Illustrator.
+```{r}
+df1$Acetobacter <- df1$Acetobacter - 60
+
+# melt data.frame
+df1 <- melt(as.matrix(df1))
+
+# add group information
+df1 <- df1 %>%
+  separate(Var1, c("Stage", "Treatments", "Genotype", "Replicates"), "_")
+
+df1$Treatments[df1$Treatments == 'VitaminB5'] <- 'Pantothenate'
+
+df1$Groups <-  factor(paste(df1$Treatments, df1$Replicates, sep = "_"), level = c("Pantothenate_1", "Pantothenate_2", "Pantothenate_3", "Pantothenate_4", "Pantothenate_5", "Pantothenate_6", "Pantothenate_7", "Pantethine_1", "Pantethine_2",  "Pantethine_3",  "Pantethine_4","Pantethine_5",  "Pantethine_6", "Pantethine_7","Pantethine_8", "Control_1", "Control_2", "Control_3",    "Control_4", "Control_5", "Control_6", "Control_7", "Control_8"))
+
+head(df1)
+str(df1)
+```
+
+
+### Stacked bar plot 
+
+```{r}
+
+# colour code
+set.seed(2333)
+(colourCount = length(unique(df1$Var2)))
+qual_col_pals <- brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
+col <- sample(col_vector, colourCount)
+# pie(rep(1,colourCount), col=sample(col_vector, colourCount))
+
+# stacked-bar plot
+(p <- ggplot(df1, aes(x = Groups, y = value, fill = Var2)) + 
+    geom_bar(stat = "identity", width = 0.8) +
+    scale_y_continuous(expand = c(0, 0)) +
+    scale_fill_manual(values = col) +
+    labs(x = "", y = "Relative abundance (%)", title = "L3 stage (heterozygous)") +
+    guides(fill = guide_legend(title="Genera", reverse = TRUE)) +
+    coord_flip() +
+    theme_bw()+
+    theme(text = element_text(size = 10),
+          panel.spacing = unit(0, "lines"),
+          strip.background = element_blank(),
+          strip.placement = "outside",
+          legend.box.background = element_rect(),
+          legend.box.margin = margin(1, 1, 1, 1),
+          legend.text = element_text(face = "italic"),
+          legend.position = "right", 
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(),
+          plot.margin=unit(c(1, 0.5, 1, 0.5),"cm")))
+
+ggsave("stacked_barplots_L3_heterozygous_genera_more_than_0.05.pdf", width = 12, height = 8.5, units = "cm", p, scale = 1.5) 
+
+```
+
+@Yi Please edit the raw figure in AI by adding the break in the x-axis. Where relative abundance is 10%, it should be 70%.
+
+### Session Info
+
+```{r}
+sessionInfo()
+```
