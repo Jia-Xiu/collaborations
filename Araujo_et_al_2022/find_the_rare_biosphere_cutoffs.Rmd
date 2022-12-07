@@ -1,0 +1,223 @@
+---
+title: "Rare biosphere analysis for the CTS dataset"
+author: "Xiu Jia (xibeihenai@gmail.com)"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+
+The composted tannery sludge (CTS) dataset are from Prof. Ademir Araujo <asfaruaj@yahoo.com.br> from Federal University of Piauí. 
+Sequence data was analyzed by Dr. Lucas William Mendes <lucaswmendes@gmail.com> from University of Sao Paulo.
+
+***
+
+##### Treatment by composted tannery sludge (CTS):
+* T1 - 0 ton CTS/ha
+* T2 - 2.5 ton CTS/ha
+* T3 - 5 ton CTS/ha
+* T4 - 10 ton CTS/ha
+* T5 - 20 ton CTS/ha
+
+##### Sampling time points:
+* 0 - 1 days after CTS application
+* 45 - 45 days after CTS application
+* 75 - 75 days after CTS application
+* 150 - 150 days after CTS application
+* 180 - 180 days after CTS application
+
+
+### initiate libraries
+```{r setup, message=FALSE, warning=FALSE}
+
+rm(list=ls())
+
+library(tidyverse)
+library(vegan)
+library(picante)
+library(reshape2)
+library(scales) # to access break formatting functions
+library(RColorBrewer)
+# display.brewer.all()
+
+```
+
+
+### load OTU table
+```{r}
+
+# feature table
+com <- read.csv("out_table_rarefied.csv", header = 1, row.names = 1, sep = ",") 
+com <- t(com)
+str(com)
+
+knitr::kable(
+  com[1:5, 1:2],
+  caption = "how the OTU table looks"
+)
+
+cat("the OTU/feature table has been rarefied to", rarefactiondepth <- mean(rowSums(com)))
+
+```
+The number of samples is: `r ncol(com)`; the number of species/ASVs is: `r nrow(com)`; the range of sequence number among samples is: `r range(colSums(com))`.
+
+
+### generate matrix of rank abundance curves
+```{r}
+
+# Calculate the lowest relative abundance (%) of the maximum ESV occurance in all samples
+row_maximum <-  apply(com, 1, max)
+
+warning("For this dataset, rarity cutoff should not more than ", round(min(row_maximum)/rarefactiondepth*100, 2), "% of the total abundance per sample!")
+
+
+# source function
+source("rad.matrix.R")
+
+# generate a rank abundance matrix
+rad <- rad.matrix(t(com))
+row.names(rad) <- rad[ ,1]
+rad <- rad[, -1]
+df <- melt(t(rad))
+df <- df[order(df$Var1),]
+
+df <- df %>% separate(Var1, into = c("Treatment", "group"), sep = "_", remove = FALSE, fill = "right", convert = TRUE) %>% 
+  separate(group, into = c("Day", "replicate"), sep = 1, fill = "right")
+
+head(df)
+
+```
+
+### find sample-specific rarity cut-offs
+```{r}
+# using method calculating H-index to get the rarity cutoff per sample
+Chao <- as.data.frame(t(estimateR(com)))
+Chao$slope <- Chao$S.obs/Chao$S.chao1
+head(Chao)
+
+# built empty matrix
+cutoffs <- matrix(NA, nrow(com), 3)
+row.names(cutoffs) <- row.names(com)
+cutoffs[,2] <- Chao$slope
+cutoffs[,3] <- Chao$S.obs
+colnames(cutoffs) <- c("Rarity.cutoffs", "Slopes", "S.obs")
+
+# find rarity cutoffs 
+for (j in 1:nrow(com)) {
+  com_j <- sort(as.numeric(com[j, ]), decreasing = TRUE)
+  com_j <- com_j[com_j!=0]
+  slope <- cutoffs[j, 2]
+  for (i in 1:length(com_j)){
+    if (com_j[i] >= i*slope){
+      H=i
+    }
+  }
+  cutoffs[j, 1] <- H
+}
+
+cutoffs <- as.data.frame(cutoffs)
+cutoffs$Var1 <- factor(row.names(cutoffs))
+
+head(cutoffs)
+
+```
+The average rarity cutoff of sample-specific rarity cut-offs is `r mean(cutoffs$Rarity.cutoffs)*100/rarefactiondepth`%.
+
+
+### rank abundance curves with sample specific cutoffs
+```{r}
+
+# only show part of the rank abundance curves
+(p <- ggplot(df, aes(x = Var2, y = value, color = Treatment)) +
+    geom_line(size = 0.4, alpha = 0.6) +
+    facet_wrap(. ~ Var1, nrow = 9) +
+    geom_text(data = cutoffs, mapping = aes(x = -Inf, y = -Inf, label = Rarity.cutoffs),
+              size=3, color = "#006699", hjust = -0.5, vjust = -2) +
+    scale_y_continuous(limits = c(0, 100)) +
+    scale_x_continuous(limits = c(0, 100)) +
+    geom_abline(data = cutoffs, aes(slope = Slopes, intercept = 0*Slopes, color = "#0099CC")) +
+    labs(x = "Rank", y = "Reads", title= "") +
+    theme_bw() +
+    theme(text = element_text(size = 8),
+          strip.background = element_blank(),
+          strip.placement = "outside",
+          strip.text = element_text(face = "bold"),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank()))
+
+# ggsave("Rank_abundance_curve_zoomin_2.pdf", width = 20, height = 20, units = "cm", p, scale = 1.5)
+
+
+# show the whole rank abundance curves
+(p <- ggplot(df, aes(x = Var2, y = value, color = Treatment)) +
+    geom_line(size = 0.4, alpha = 0.6) +
+    facet_wrap(. ~ Var1, nrow = 9) +
+    geom_text(data = cutoffs, mapping = aes(x = -Inf, y = -Inf, label = Rarity.cutoffs),
+              size=3, color = "#006699", hjust = -0.3, vjust = -4) +
+    geom_abline(data = cutoffs, aes(slope = Slopes, intercept = 0*Slopes, color = "#0099CC")) +
+    labs(x = "Rank", y = "Reads", title= "") +
+    theme_bw() +
+    theme(text = element_text(size = 8),
+          strip.background = element_blank(),
+          strip.placement = "outside",
+          strip.text = element_text(face = "bold"),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank()))
+
+# ggsave("Rank_abundance_curve_ssrc.pdf", width = 20, height = 20, units = "cm", p, scale = 1.5)
+
+```
+
+
+### rank abundance curves with all rarity cutoffs
+Three commonly used cutoffs are: 0.01% - `r rarefactiondepth*0.0001` reads, 0.1% - `r rarefactiondepth*0.001` reads and 1% - `r rarefactiondepth*0.01` reads.
+```{r}
+
+c(brewer.pal(9, "Blues")[c(3, 5, 7)])
+
+# y log-scale
+(p <- ggplot(df, aes(x = Var2, y = value, group = Var1)) +
+    geom_line(size = 0.4, alpha = 0.6, color = "gray") +
+    scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x),
+                  labels = trans_format("log10", math_format(10^.x))) +
+    geom_hline(yintercept = c(1.45), linetype = "dashed", size = 0.4, color = "#C6DBEF") + 
+    geom_hline(yintercept = c(14.5), linetype = "dashed", size = 0.4, color = "#6BAED6") + 
+    geom_hline(yintercept = c(1450), linetype = "dashed", size = 0.4, color = "#2171B5") + 
+    geom_hline(yintercept = c(mean(cutoffs$Rarity.cutoffs)), linetype = "dashed", size = 0.4, color = "#FFCC99") + 
+    annotate("text", x = 2800, y = 2, color = "#C6DBEF", label = "Rarity cutoff < 0.01 %", size = 6/.pt) + 
+    annotate("text", x = 2800, y = 20, color = "#6BAED6", label = "Rarity cutoff < 0.1 %", size = 6/.pt) +
+    annotate("text", x = 2800, y = 1800, color = "#2171B5", label = "Rarity cutoff < 1.0 %", size = 6/.pt) +
+    annotate("text", x = 2800, y = 60, color = "#FFCC99", label = "Sample-specific rarity cutoffs ~ 0.3 %", size = 6/.pt) + 
+    labs(x = "Rank", y= "Reads", title= "") +
+    theme_bw() +
+    theme(text = element_text(size = 8),
+          panel.grid.major = element_line(size = 0.2),
+          panel.grid.minor = element_blank()))
+
+# ggsave("Rank_abundance_curve_four_cutoffs_logy.pdf", width = 8.5, height = 8, units = "cm", p, scale = 1)
+
+
+# y normal scale
+(p <- ggplot(df, aes(x = Var2, y = value, group = Var1)) +
+    geom_line(size = 0.4, alpha = 0.6, color = "gray") +
+    geom_hline(yintercept = c(1.45), linetype = "dashed", size = 0.4, color = "#C6DBEF") + 
+    geom_hline(yintercept = c(14.5), linetype = "dashed", size = 0.4, color = "#6BAED6") + 
+    geom_hline(yintercept = c(1450), linetype = "dashed", size = 0.4, color = "#2171B5") + 
+    geom_hline(yintercept = c(mean(cutoffs$Rarity.cutoffs)), linetype = "dashed", size = 0.4, color = "#FFCC99") + 
+    annotate("text", x = 2800, y = 2, color = "#C6DBEF", label = "Rarity cutoff < 0.01 %", size = 6/.pt) + 
+    annotate("text", x = 2800, y = 20, color = "#6BAED6", label = "Rarity cutoff < 0.1 %", size = 6/.pt) +
+    annotate("text", x = 2800, y = 1500, color = "#2171B5", label = "Rarity cutoff < 1.0 %", size = 6/.pt) +
+    annotate("text", x = 2800, y = 65, color = "#FFCC99", label = "Sample-specific rarity cutoffs ~ 0.3 %", size = 6/.pt) + 
+    labs(x = "Rank", y= "Reads", title= "") +
+    theme_bw() +
+    theme(text = element_text(size = 8),
+          panel.grid.major = element_line(size = 0.2),
+          panel.grid.minor = element_blank()))
+
+# ggsave("Rank_abundance_curve_four_cutoffs.pdf", width = 8.5, height = 8, units = "cm", p, scale = 1)
+
+```
+
+
+### Session Info
+```{r}
+sessionInfo()
+```

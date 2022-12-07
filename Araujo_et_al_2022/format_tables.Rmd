@@ -1,0 +1,129 @@
+---
+title: "format tables for the CTS dataset"
+author: "Xiu Jia (xibeihenai@gmail.com)"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+
+The composted tannery sludge (CTS) dataset are from Prof. Ademir Araujo <asfaruaj@yahoo.com.br> from Federal University of Piauí. 
+Sequence data was analyzed by Dr. Lucas William Mendes <lucaswmendes@gmail.com> from University of Sao Paulo.
+
+***
+
+##### Treatment by composted tannery sludge (CTS):
++ T1 - 0 ton CTS/ha
++ T2 - 2.5 ton CTS/ha
++ T3 - 5 ton CTS/ha
++ T4 - 10 ton CTS/ha
++ T5 - 20 ton CTS/ha
+
+##### Sampling time points:
++ 0 - 1 days after CTS application
++ 45 - 45 days after CTS application
++ 75 - 75 days after CTS application
++ 150 - 150 days after CTS application
++ 180 - 180 days after CTS application
+
+
+### initiate libraries
+```{r load_packages_01, message=FALSE, warning=FALSE}
+
+rm(list=ls())
+
+library(tidyverse)
+library(vegan)
+library(picante)
+
+```
+
+
+### load OTU table
+```{r}
+
+# feature table
+com <- read.csv("OTU_table_unrare.csv", header = 1, row.names = 1, sep = ",") 
+dim(com)
+
+# remove Unassigned, Archaea, Chloroplast and Mitochondria and only keep OTU assigned at phylum level
+
+com <- com %>% 
+  filter(!grepl('Archaea', taxonomy)) %>% 
+  filter(!grepl('Chloroplast', taxonomy)) %>% # D_0__Bacteria; D_1__Cyanobacteria; D_2__Oxyphotobacteria; D_3__Chloroplast
+  filter(!grepl('Mitochondria', taxonomy)) %>%  # D_0__Bacteria; D_1__Proteobacteria; D_2__Alphaproteobacteria; D_3__Rickettsiales; D_4__Mitochondria
+  filter(grepl('D_1__', taxonomy)) #   filter(!grepl('Unassigned', taxonomy)) %>%  is not nessary
+
+dim(com)
+
+# write.csv(com, "out_table_bacteria_only.csv")
+
+# extracted a taxonomy table
+taxa <- com %>% 
+  select(taxonomy)
+
+dim(taxa)
+
+# exported the taxonomy table
+# write.csv(taxa, "taxonomy.csv")
+
+# only keep OTUs from the table
+com <- com %>% 
+  select(-taxonomy)
+
+dim(com)
+```
+
+
+### rarefy the OTU table
+```{r}
+# check the total sequence of samples
+head(sort(colSums(com)))
+dim(com)
+range(rowSums(com))
+
+# check how the table looks like
+com[1:3, 1:3]
+
+# Set cutoff by youself
+cutoff <- 14500
+
+# rarefy
+set.seed(123)
+rare <- rrarefy(t(com), cutoff)
+rare <- rare[, colSums(rare)!=0]
+rare <- t(rare)
+
+# # after rarefying, we lost 105 features, which might have low fequency and abundance (I need to further verify this)
+dim(rare)
+
+# check if rarefy work
+range(rowSums(rare))
+head(sort(colSums(rare)))
+rare[1:2, 1:2]
+
+# save the rarefied table for later use
+# write.csv(rare, "out_table_rarefied.csv")
+
+```
+
+
+### load phylogenetic tree
+```{r eval=FALSE, warning=FALSE, include=FALSE}
+
+phylo <- read.tree("tree.nwk")
+
+str(phylo)
+
+print("prune tree")
+match.phylo.com <- match.phylo.data(phylo, rare); # species as rows, samples as columns for com table
+str(match.phylo.com)
+
+# save the pruned tree
+# write.tree(match.phylo.com$phy, file = "tree_pruned.nwk")
+
+```
+
+
+### Session Info
+```{r}
+sessionInfo()
+```

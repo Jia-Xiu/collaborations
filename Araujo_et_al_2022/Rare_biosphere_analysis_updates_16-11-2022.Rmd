@@ -1,0 +1,980 @@
+---
+title: "Rare biosphere analysis for the CTS dataset"
+author: "Xiu Jia (xibeihenai@gmail.com)"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+The composted tannery sludge (CTS) dataset from Prof. Ademir Araujo <asfaruaj@yahoo.com.br> from Federal University of Piauí. 
+Sequence data was analyzed by Dr. Lucas William Mendes <lucaswmendes@gmail.com> from University of Sao Paulo.
+
+***
+
+##### Treatment by composted tannery sludge (CTS) / CTS concentration:
+* T1 - 0 ton CTS/ha
+* T2 - 2.5 ton CTS/ha
+* T3 - 5 ton CTS/ha
+* T4 - 10 ton CTS/ha
+* T5 - 20 ton CTS/ha
+
+##### Sampling time points:
+* 0 - 1 days after CTS application
+* 45 - 45 days after CTS application
+* 75 - 75 days after CTS application
+* 150 - 150 days after CTS application
+* 180 - 180 days after CTS application
+
+
+### initiate libraries
+```{r setup, message=FALSE, warning=FALSE}
+
+rm(list=ls())
+
+library(tidyverse)
+library(vegan)
+library(ape)
+library(RColorBrewer)
+library(ggpubr)
+library(ggpmisc)
+
+mytheme <- theme_bw()+
+    theme(panel.spacing = unit(0, "lines"),
+          strip.background = element_blank(),
+          strip.placement = "outside",
+          legend.box.background = element_rect(),
+          legend.box.margin = margin(1, 1, 1, 1),
+          legend.position = "right", 
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank())
+```
+
+
+### load OTU table
+```{r}
+
+# feature table
+com <- read.csv("out_table_rarefied.csv", header = 1, row.names = 1, sep = ",") 
+com <- t(com)
+str(com)
+
+knitr::kable(
+  com[1:5, 1:2],
+  caption = "how the OTU table looks"
+)
+
+cat("the OTU/feature table has been rarefied to", rarefactiondepth <- mean(rowSums(com)))
+
+```
+The number of samples is: `r nrow(com)`; the number of species/ASVs is: `r ncol(com)`; the range of sequence number among samples is: `r range(colSums(com))`.
+
+
+### load metadata
+```{r}
+
+metadata <- read.csv("metadata.csv", header = 1, row.names = 1, sep = ",")
+
+dim(metadata)
+
+head(metadata)
+
+```
+
+
+### load taxonomy
+```{r}
+
+taxonomy <- read.csv("taxonomy_splited_columns.csv", header = 1, row.names = 1, sep = ",")
+
+dim(taxonomy)
+
+head(taxonomy)
+
+```
+
+
+### using sample specific cutoffs to define the rare and common biospheres
+For more details about 'sample specific cutoffs' please check Jia, X., Dini-Andreote, F. & Salles, J.F. Unravelling the interplay of ecological processes structuring the bacterial rare biosphere. ISME COMMUN. 2, 96 (2022). https://doi.org/10.1038/s43705-022-00177-6
+```{r}
+
+# source the TruncateTable FUNCTION
+source("TruncateTable.r")
+
+# The truncated datasets can be stored as follows: 
+dominant <- TruncateTable(com, typem = "dominant") 
+str(dominant)
+
+# write.csv(t(dominant), "OTU_table_dominant.csv")
+
+rare <-TruncateTable(com, typem = "rare") 
+str(rare)
+
+# write.csv(t(rare),  "OTU_table_rare.csv")
+
+
+# Combine rare and dominant biosphere
+row.names(dominant) <- paste("dominant", row.names(dominant), sep = "_")
+dominant <- as.data.frame(t(dominant))
+
+row.names(rare) <- paste("rare", row.names(rare), sep = "_")
+rare <- as.data.frame(t(rare))
+
+# combine rare & dominant biospheres
+com_rare_dominant <- transform(merge(dominant, rare, by = "row.names", all = TRUE), row.names = Row.names, Row.names = NULL)  
+com_rare_dominant[is.na(com_rare_dominant)] <- 0
+dim(com_rare_dominant)
+
+```
+
+
+### total relative abundance of the rare and dominant biosphere
+
+```{r}
+com_rare_dominant[1:2, 1:3]
+
+df <- as.data.frame(colSums(com_rare_dominant))
+df$ab <- df[, 1]
+                 
+df <- df %>% 
+  rownames_to_column(var = "col") %>% 
+  separate(col, into = c("Biosphere", "Treat", "Day"), sep = "_") %>% 
+  mutate(Day = gsub('.{1}$', '', Day)) %>% 
+  select(-4)
+
+# calculate relative abundance
+df$ab <- df$ab*100/rarefactiondepth
+
+# change Treat info
+df1 <- df %>%
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Biospheres = factor(Biosphere, levels = c("dominant", "rare"), labels = c("Dominant biosphere", "Rare biosphere")))
+
+df1$Day <- as.numeric(as.character(df1$Day))
+
+head(df1)
+
+# line plot
+(p <- ggplot(df1, aes(x = Day, y = ab)) + 
+    geom_smooth(method = lm, se = TRUE, size = .6, aes(color = Treat)) +
+    geom_point(aes(color = Treat), size = 3, alpha = .8) + 
+    scale_color_brewer(palette = "PuBu", name = "CTS concentration") +
+    facet_grid(Biospheres ~ Treat, scales = "free_y") +
+    stat_poly_eq(mapping = use_label(c("R2", "P")), p.digits = 2, label.y = "bottom", label.x = "left") +
+    scale_x_continuous(breaks = c(0, 45, 75, 150, 180)) +
+    labs(title = "", x = "Day", y = "Relative abundance (%)") +
+    mytheme +
+    theme(text = element_text(size = 15)))
+
+# ggsave("Total_relative_abundance_rare_dominant_biospheres.pdf", width = 20, height = 8, units = "cm", p, scale = 1.7)
+# ggsave("Total_relative_abundance_rare_dominant_biospheres.jpg", width = 20, height = 8, units = "cm", p, scale = 1.7)
+
+# change Treat info
+df2 <- df %>%
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0", "2.5", "5", "10", "20"))) %>%
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) %>% 
+  mutate(Biospheres = factor(Biosphere, levels = c("dominant", "rare"), labels = c("Dominant biosphere", "Rare biosphere")))
+
+df2$Treat <- as.numeric(as.character(df2$Treat))
+
+head(df2)
+
+# line plot
+(p <- ggplot(df2, aes(x = Treat, y = ab)) + 
+    geom_smooth(method = lm, se = TRUE, size = .6, aes(color = factor(Treat))) +
+    geom_point(aes(color = factor(Treat)), size = 3, alpha = .8) + 
+    scale_color_brewer(palette = "PuBu", name = "CTS concentration") +
+    stat_poly_eq(mapping = use_label(c("R2", "P")), p.digits = 2, label.y = "bottom", label.x = "left") +
+    scale_x_continuous(breaks = c(0, 2.5, 5, 10, 20)) +
+    facet_grid(Biospheres ~ Day, scales = "free_y") +
+    labs(title = "", x = "Treatment", y = "Relative abundance (%)") +
+    mytheme +
+    theme(text = element_text(size = 15)))
+
+# ggsave("Total_relative_abundance_rare_dominant_biospheres_treat.pdf", width = 20, height = 8, units = "cm", p, scale = 1.7)
+# ggsave("Total_relative_abundance_rare_dominant_biospheres_treat.jpg", width = 20, height = 8, units = "cm", p, scale = 1.7)
+
+```
+
+
+### number of OTUs in the rare and dominant biosphere
+```{r}
+
+richness <- specnumber(t(com_rare_dominant))
+df <- data.frame(richness)
+
+# prepare a meta data file
+group_info <- data.frame(row.names = rownames(df), t(as.data.frame(strsplit(as.character(row.names(df)), "_"))))
+
+# remove last letter in the third column
+group_info$X3 <- gsub('.{1}$', '', group_info$X3)
+
+
+# combine metadata to the dominant phyla table
+df <- data.frame(Biosphere = as.factor(group_info[,1]),
+                 Treat = as.factor(group_info[,2]),
+                 Day = as.factor(group_info[,3]),
+                 df)
+
+#  get average per group
+df1 <- df %>%
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) %>% 
+  mutate(Biospheres = factor(Biosphere, levels = c("dominant", "rare"), labels = c("Dominant biosphere", "Rare biosphere"))) %>%
+  group_by(Biospheres, Treat, Day) %>% 
+  summarise(avg = mean(richness, na.rm=T)) %>% 
+  arrange(Day, rev(Biospheres)) %>% 
+  group_by(Day, Treat) %>% 
+  mutate(label_y = cumsum(avg) - 0.5 * avg)
+
+df1$avg <- as.integer(df1$avg)
+
+
+# stacked-bar plot
+(p <- ggplot(df1, aes(x = Day, y = avg, fill = Biospheres)) + 
+    geom_col(color = "black", width = 0.8, lwd = 0.1) +
+    scale_y_continuous(expand = c(0, 8)) +
+    facet_grid(. ~ Treat) +
+    labs(x = "Days", y = "Richness (NO. of OTUs)", title = "") +
+    geom_text(aes(y = label_y, label = avg),  colour = "white", size = 2) +
+    scale_fill_brewer(palette = "Pastel1") +
+    mytheme)
+
+# ggsave("Richness_stacked_rare_dominant.pdf", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_1.pdf", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_1.jpg", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+
+# line plot
+df2 <- df %>%
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) %>% 
+  mutate(Biospheres = factor(Biosphere, levels = c("dominant", "rare"), labels = c("Dominant biosphere", "Rare biosphere")))
+
+pd <- position_dodge(0.2)  
+
+(p <- ggplot(df2, aes(x = Day, y = richness, group = Treat, colour = Treat)) + 
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.2, alpha = 0.5, position = pd) +
+    stat_summary(fun = "mean", geom = "line", alpha = 0.5, position = pd) + 
+    stat_summary(fun = "mean", geom = "point", size = 3, position = pd) +
+    scale_color_brewer(palette="PuBu", name = "CTS concentration") +
+    facet_wrap(.~Biospheres, scales = "free_y") +
+    labs(title = "", x = "Day", y = "Richness (NO. of OTUs)") +
+    mytheme)
+
+# ggsave("Richness_lineplot_freey_rare_dominant.pdf", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+
+(p <- ggplot(df2, aes(x = Day, y = richness, group = Treat, colour = Treat)) + 
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.2, alpha = 0.5, position = pd) +
+    stat_summary(fun = "mean", geom = "line", alpha = 0.5, position = pd) + 
+    stat_summary(fun = "mean", geom = "point", size = 3, position = pd) +
+    scale_color_brewer(palette="PuBu", name = "CTS concentration") +
+    facet_grid(.~Biospheres) +
+    labs(title = "", x = "Day", y = "Richness (NO. of OTUs)") +
+    mytheme)
+
+# ggsave("Richness_lineplot_rare_dominant.pdf", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_1_optional.pdf", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_1_optional.jpg", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+
+```
+
+
+### beta-diversity
+
+```{r fig.show = "hold", out.width = "50%"}
+
+# dominant biosphere
+dist <- vegdist(t(dominant), method = "bray", binary = FALSE, diag = 1) 
+
+re <- pcoa(dist, correction = "none", rn = NULL)
+df <- re$vectors[, 1:2]
+
+# prepare a meta data file
+group_info <- data.frame(row.names = rownames(df), t(as.data.frame(strsplit(as.character(row.names(df)), "_"))))
+
+# remove last letter in the third column
+group_info$X3 <- gsub('.{1}$', '', group_info$X3)
+
+# combine metadata to the dominant phyla table
+df <- data.frame(Biosphere = as.factor(group_info[,1]),
+                 Treat = as.factor(group_info[,2]),
+                 Day = as.factor(group_info[,3]),
+                 df)
+
+df <- df %>%
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) 
+
+# two way permanova
+set.seed(123)
+result <- adonis(dist ~ Treat*Day, data = df,  permutation = 9999) 
+result$aov.tab
+
+# write.csv(result$aov.tab, "PERMANOVA_dominant.csv")
+
+
+(p1 <- ggplot(df, aes(Axis.1, Axis.2, shape = Treat, color = Day)) +
+    geom_point(size = 3, alpha = 0.7) + 
+    labs(x = paste("PCoA1 (", round(re$values$Relative_eig[1] * 100, 2), "%)", sep = ""), 
+         y = paste("PCoA2 (", round(re$values$Relative_eig[2] * 100, 2), "%)", sep = ""), 
+         title = "Dominant biosphere") +
+    scale_color_brewer(palette="Dark2") +
+    scale_shape_manual(values = c(1, 0, 15, 16, 17), name = "CTS concentration") +
+    theme_bw())
+
+
+# rare biosphere
+dist <- vegdist(t(rare), method = "bray", binary = FALSE, diag = 1) 
+
+re <- pcoa(dist, correction = "none", rn = NULL)
+df <- re$vectors[, 1:2]
+
+# prepare a meta data file
+group_info <- data.frame(row.names = rownames(df), t(as.data.frame(strsplit(as.character(row.names(df)), "_"))))
+
+# remove last letter in the third column
+group_info$X3 <- gsub('.{1}$', '', group_info$X3)
+
+# combine metadata to the dominant phyla table
+df <- data.frame(Biosphere = as.factor(group_info[,1]),
+                 Treat = as.factor(group_info[,2]),
+                 Day = as.factor(group_info[,3]),
+                 df)
+
+df <- df %>%
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) 
+
+# two way permanova
+set.seed(123)
+result <- adonis(dist ~ Treat*Day, data = df,  permutation = 9999) 
+result$aov.tab
+
+# write.csv(result$aov.tab, "PERMANOVA_rare.csv")
+
+(p2 <- ggplot(df, aes(Axis.1, Axis.2, shape = Treat, color = Day)) +
+    geom_point(size = 3, alpha = 0.7) + 
+    labs(x = paste("PCoA1 (", round(re$values$Relative_eig[1] * 100, 2), "%)", sep = ""), 
+         y = paste("PCoA2 (", round(re$values$Relative_eig[2] * 100, 2), "%)", sep = ""), 
+         title = "Rare biosphere") +
+    scale_color_brewer(palette="Dark2") +
+    scale_shape_manual(values = c(1, 0, 15, 16, 17), name = "CTS concentration") +
+    theme_bw())
+
+
+p <- ggarrange(p1, p2, labels = c("A", "B"), common.legend = TRUE, legend = "right", ncol = 2)
+
+# ggsave("PCoA_rare_dominant.pdf", width = 16, height = 7.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_2.pdf", width = 16, height = 7.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_2.jpg", width = 16, height = 7.5, units = "cm", p, scale = 1.5)
+
+```
+
+
+### Phyla composition
+```{r}
+
+# species composition of the rare and dominant biosphere at Phyla level (relative abundance) 
+
+# add taxonomy info
+df <- transform(merge(taxonomy[, -c(1, 4:7)], com_rare_dominant, by = "row.names"), row.names = Row.names, Row.names = NULL)  
+
+df <- df %>% select(-Class)
+
+
+warning("double check is the table rarified or not?")
+(rarefactiondepth <- mean(rowSums(com)))
+
+# combine OTUs in the same phylum
+df <- aggregate(df[,-1], list(df$Phylum), sum)
+row.names(df) <- df$Group.1
+df <- df[, -1]
+df <- 100*df/rarefactiondepth
+
+
+df[1:2, 1:4]
+row.names(df)
+
+```
+
+
+all phyla
+```{r}
+# transpose the dataframe
+df1 <- t(df)
+df1 <- as.data.frame(df1)
+
+# prepare a meta data file
+group_info <- data.frame(row.names = rownames(df1), t(as.data.frame(strsplit(as.character(row.names(df1)), "_"))))
+
+# remove last letter in the third column
+group_info$X3 <- gsub('.{1}$', '', group_info$X3)
+
+# combine metadata to the dominant phyla table
+df1.1 <- data.frame(Biosphere = as.factor(group_info[,1]),
+                  Treat = as.factor(group_info[,2]),
+                  Day = as.factor(group_info[,3]),
+                  df1)
+
+#  pivot data frame from wide to long
+df1.2 <- df1.1 %>%
+  pivot_longer(cols = 4:ncol(df1.1), 
+               names_to = "Phyla", 
+               values_to = "value") %>% 
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) %>% 
+  mutate(Biosphere = factor(Biosphere, levels = c("dominant", "rare"), labels = c("Dominant biosphere", "Rare biosphere")))
+
+head(df1.2)
+
+# write_csv(df1.2, "phyla_composition_all_rare_dominnat.csv")
+
+#  pivot data frame from wide to long
+df1.1 <- df1.1 %>%
+  pivot_longer(cols = 4:ncol(df1.1), 
+               names_to = "Phyla", 
+               values_to = "value") %>% 
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) %>% 
+  mutate(Biosphere = factor(Biosphere, levels = c("dominant", "rare"), labels = c("Dominant biosphere", "Rare biosphere"))) %>% 
+  group_by(Biosphere, Treat, Day, Phyla) %>% 
+  summarise(avg = mean(value, na.rm=T)) 
+
+head(df1.1)
+
+set.seed(112358)
+(colourCount = length(colnames(df1)))
+qual_col_pals <- brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
+col <- sample(col_vector, colourCount)
+# pie(rep(1,colourCount), col=sample(col_vector, colourCount))
+
+# stacked-bar plot
+(p <- ggplot(df1.1, aes(x = Day, y = avg, fill = Phyla)) + 
+    geom_bar(stat = "identity", width = 0.8) +
+    scale_y_continuous(expand = c(0, 0)) +
+    scale_fill_manual(values = col) +
+    facet_grid(Biosphere ~ Treat) +
+    labs(x = "Days", y = "Relative abundance (%)", title = "") +
+    guides(fill = guide_legend(title="Phyla", reverse = TRUE)) +
+    mytheme)
+
+ggsave("phyla_stacked_barplots_all_rare_dominant.pdf", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_3.pdf", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_3.jpg", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+```
+
+
+only keep phyla with average relative abundance > 0.1%
+```{r}
+# only keep phyla with average relative abundance > 0.1%
+df2 <- df
+df2$mean <- rowMeans(df2)
+df2 <- subset(df2, mean > 0.1)
+df2 <- df2[with(df2, order(mean)), ]
+df2$mean <- NULL
+
+# phyla that abundance more than 0.1%
+row.names(df2)
+
+# transpose the dataframe
+df2 <- t(df2)
+df2 <- as.data.frame(df2)
+
+# prepare a meta data file
+group_info <- data.frame(row.names = rownames(df2), t(as.data.frame(strsplit(as.character(row.names(df2)), "_"))))
+
+# remove last letter in the third column
+group_info$X3 <- gsub('.{1}$', '', group_info$X3)
+
+# combine metadata to the dominant phyla table
+df3 <- data.frame(Biosphere = as.factor(group_info[,1]),
+                  Treat = as.factor(group_info[,2]),
+                  Day = as.factor(group_info[,3]),
+                  df2)
+
+#  pivot data frame from wide to long
+df3 <- df3 %>%
+  pivot_longer(cols = 4:ncol(df3), 
+               names_to = "Phyla", 
+               values_to = "value") %>% 
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) %>% 
+  mutate(Biosphere = factor(Biosphere, levels = c("dominant", "rare"), labels = c("Dominant biosphere", "Rare biosphere"))) %>% 
+  group_by(Biosphere, Treat, Day, Phyla) %>% 
+  summarise(avg = mean(value, na.rm=T)) #  summarise_at(vars("PM25", "Ozone", "CO2"), mean); or summarise(across(PM25:CO2, mean))
+
+head(df3)
+
+set.seed(112358)
+(colourCount = length(colnames(df2)))
+qual_col_pals <- brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
+col <- sample(col_vector, colourCount)
+# pie(rep(1,colourCount), col=sample(col_vector, colourCount))
+
+# stacked-bar plot
+(p <- ggplot(df3, aes(x = Day, y = avg, fill = Phyla)) + 
+    geom_bar(stat = "identity", width = 0.8) +
+    scale_y_continuous(expand = c(0, 0)) +
+    scale_fill_manual(values = col) +
+    facet_grid(Biosphere ~ Treat) +
+    labs(x = "Days", y = "Relative abundance (%)", title = "") +
+    guides(fill = guide_legend(title="Phyla", reverse = TRUE)) +
+    mytheme)
+
+# ggsave("phyla_stacked_barplots_more_than_0.1_rare_dominant.pdf", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_3.pdf", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_3.jpg", width = 14, height = 8.5, units = "cm", p, scale = 1.5)
+```
+
+### define different types of rarity and commonness
+
+first find the most types (except transiently rare)
+```{r}
+# find all taxa belongs to the rare biosphere
+taxa_rare <- row.names(rare)
+taxa_dominant <- row.names(dominant)
+
+# create a data.frame that
+df_types <- data.frame(OTU_ID = colnames(com), 
+                 Types = NA)
+
+conditionally_rare_dominant <- taxa_dominant[taxa_dominant %in% taxa_rare]
+permanently_dominant <- taxa_dominant[!taxa_dominant %in% taxa_rare]
+only_rare <- taxa_rare[!taxa_rare %in% taxa_dominant]
+
+cat("the number of OTUs in the dominant biosphere is", length(taxa_dominant),
+    "\nthe number of OTUs in the rare biosphere is", length(taxa_rare),
+    "\nthe number of conditionally rare/dominant OTUs is", length(conditionally_rare_dominant),
+    "\nthe number of OTUs that only apears in the dominant biosphere is", length(permanently_dominant),
+    "\nthe number of rare OTUs that not appear in the dominant biosphere is", length(only_rare))
+
+
+df_types$Types[df_types$OTU_ID %in% conditionally_rare_dominant] <- "conditionally_rare_dominant"
+df_types$Types[df_types$OTU_ID %in% only_rare] <- "only_rare"
+df_types$Types[df_types$OTU_ID %in% permanently_dominant] <- "permanently_dominant"
+
+df_types <- df_types %>%
+  # mutate(Types = factor(Types)) %>% 
+  mutate(OTU_ID = as.character(OTU_ID))
+
+head(df_types)
+table(df_types$Types)
+
+# write.csv(df_types,  "OTU_ID_and_types.csv")
+```
+
+
+different types of rarity and dominance in a facet plot
+```{r}
+
+com_classified <- com_rare_dominant %>% 
+  rownames_to_column(var = "OTU_ID") 
+
+com_classified <- left_join(df_types, com_classified, by = "OTU_ID") %>% 
+  column_to_rownames(var = "OTU_ID")
+
+
+# last step - define the "transiently rare"
+com_classified$Types[which(rowSums(com_classified[, -1] != 0) == 1 & com_classified$Types != "conditionally_rare_dominant "& com_classified$Types != "permanently_dominant") ] <- "transiently_rare"
+
+com_classified[1:2, 1:3]
+
+df <- com_classified %>%
+  group_by(Types) %>%
+  summarise(across(everything(), list(sum))) %>% 
+  column_to_rownames(var = "Types")
+
+df <- as.data.frame(t(df))
+
+# calculate relative abundance
+df <- 100*df/rarefactiondepth
+
+# prepare a meta data file
+group_info <- data.frame(row.names = rownames(df), t(as.data.frame(strsplit(as.character(row.names(df)), "_"))))
+
+# remove last letter in the third column
+group_info$X3 <- gsub('.{1}$', '', group_info$X3)
+
+# combine metadata to the dominant phyla table
+df1 <- data.frame(Biosphere = as.factor(group_info[,1]),
+                  Treat = as.factor(group_info[,2]),
+                  Day = as.factor(group_info[,3]),
+                  df)
+
+#  pivot data frame from wide to long
+df2 <- df1 %>%
+  pivot_longer(cols = 4:ncol(df1), 
+               names_to = "Types", 
+               values_to = "value") 
+
+df2$Types[df2$Types == "conditionally_rare_dominant" & df2$Biosphere == "dominant"] <- "conditionally_dominant"
+df2$Types[df2$Types == "conditionally_rare_dominant" & df2$Biosphere == "rare"] <- "conditionally_rare"
+
+df2 <- df2 %>% 
+  select(-Biosphere) %>% 
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Types = factor(Types, levels = c("conditionally_dominant", "permanently_dominant", "only_rare", "conditionally_rare", "transiently_rare"), labels = c("Conditionally dominant", "Permanently dominant", "Permanently rare", "Conditionally rare", "Transiently rare"))) %>% 
+  filter(value > 0)
+
+df2$Day <- as.numeric(as.character(df2$Day))
+
+head(df2)
+str(df2)
+
+# line plot
+(p <- ggplot(df2, aes(x = Day, y = value)) + 
+    geom_smooth(method = lm, se = TRUE, size = .6, aes(color = Treat)) +
+    geom_point(aes(color = Treat), size = 3, alpha = .8) + 
+    scale_color_brewer(palette = "PuBu", name = "CTS concentration") +
+    facet_grid(Types~Treat, scales="free_y") +
+    stat_poly_eq(mapping = use_label(c("R2", "P")), p.digits = 2, label.y = "bottom", label.x = "left") +
+    scale_x_continuous(breaks=c(0, 45, 75, 150, 180)) +
+    labs(title = "", x = "Day", y = "Relative abundance (%)") +
+    mytheme +
+    theme(text = element_text(size = 15)))
+
+# ggsave("Figure_5_new.pdf", width = 20, height = 15, units = "cm", p, scale = 1.7)
+# ggsave("Figure_5_new.jpg", width = 20, height = 15, units = "cm", p, scale = 1.7)
+
+
+```
+
+
+dominant biosphere
+```{r}
+
+# add rarify classification to the dominant OTU table
+dominant_classified <- dominant %>% 
+  rownames_to_column(var = "OTU_ID") 
+
+dominant_classified <- left_join(dominant_classified, df_types, by = "OTU_ID") %>% 
+  column_to_rownames(var = "OTU_ID")
+
+# define the "transiently dominant"
+# dominant_classified$Types[which(rowSums(dominant_classified[,-ncol(dominant_classified)] != 0) == 1)] = "transiently_dominant"
+# conditionally_rare_dominant 
+#                         236 
+#        permanently_dominant 
+#                           1 
+#        transiently_dominant 
+#                         234 
+
+# write.csv(dominant_classified,  "OTU_table_dominant_with_types.csv")
+
+# summarize sequence number per type
+df <- aggregate(dominant_classified[,-ncol(dominant_classified)], list(dominant_classified$Types), sum)
+
+row.names(df) <- df$Group.1
+df <- df[, -1]
+df <- as.data.frame(t(df))
+
+# calculate relative abundance
+df <- 100*df/rarefactiondepth
+
+# prepare a meta data file
+group_info <- data.frame(row.names = rownames(df), t(as.data.frame(strsplit(as.character(row.names(df)), "_"))))
+
+# remove last letter in the third column
+group_info$X3 <- gsub('.{1}$', '', group_info$X3)
+
+# combine metadata to the dominant phyla table
+df1 <- data.frame(Biosphere = as.factor(group_info[,1]),
+                  Treat = as.factor(group_info[,2]),
+                  Day = as.factor(group_info[,3]),
+                  df)
+
+#  pivot data frame from wide to long
+df2 <- df1 %>%
+  pivot_longer(cols = 4:ncol(df1), 
+               names_to = "Types", 
+               values_to = "value") %>% 
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) %>% 
+  mutate(Types = factor(Types, levels = c("conditionally_rare_dominant", "permanently_dominant"), labels = c("Conditionally dominant", "Permanently dominant"))) %>% 
+  group_by(Biosphere, Treat, Day, Types) %>% 
+  summarise(avg = mean(value, na.rm=T)) 
+
+df2$avg <- as.integer(df2$avg)
+
+my_palette = c(brewer.pal(8, "Pastel2")[c(5:6)])
+
+# stacked-bar plot
+(p1 <- ggplot(df2, aes(x = Day, y = avg, fill = Types)) + 
+    geom_col(color = "black", width = 0.8, lwd = 0.1) +
+    scale_y_continuous(expand = c(0, 0), limits=c(0, 80)) +
+    scale_fill_manual(values = my_palette) +
+    facet_grid(. ~ Treat) +
+    labs(x = "Days", y = "Relative abundance (%)", title = "Dominant biosphere") +
+    guides(fill = guide_legend(title="Types of dominance")) +
+    mytheme+
+    theme(legend.position = "bottom"))
+
+# line plot
+
+#  pivot data frame from wide to long
+df3 <- df1 %>%
+  pivot_longer(cols = 4:ncol(df1), 
+               names_to = "Types", 
+               values_to = "value") %>% 
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) %>% 
+  mutate(Types = factor(Types, levels = c("conditionally_rare_dominant", "permanently_dominant"), labels = c("Conditionally dominant", "Permanently dominant")))
+
+(f1 <- ggplot(df3, aes(x = Day, y = value, group = Treat, colour = Treat)) + 
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.2, alpha = 0.5, position = pd) +
+    stat_summary(fun = "mean", geom = "line", alpha = 0.4, position = pd) + 
+    stat_summary(fun = "mean", geom = "point", size = 2, alpha = 0.9, position = pd) +
+    scale_color_brewer(palette="PuBu", name = "CTS concentration") +
+    facet_grid(.~Types) +
+    labs(title = "Dominant biosphere", x = "Day", y = "Relative abundance (%)") +
+    mytheme)
+
+```
+
+rare biosphere
+```{r}
+
+# add rarify classification to the rare OTU table
+rare_classified <- rare %>% 
+  rownames_to_column(var = "OTU_ID") 
+
+rare_classified <- left_join(rare_classified, df_types, by = "OTU_ID") %>% 
+  column_to_rownames(var = "OTU_ID")
+
+# define the "transiently rare"
+rare_classified$Types[which(rowSums(rare_classified[,-ncol(rare_classified)] != 0) == 1)] = "transiently_rare"
+
+# write.csv(rare_classified,  "OTU_table_rare_with_types.csv")
+
+# summarize sequence number per type
+df <- aggregate(rare_classified[,-ncol(rare_classified)], list(rare_classified$Types), sum)
+
+row.names(df) <- df$Group.1
+df <- df[, -1]
+df <- as.data.frame(t(df))
+
+# calculate relative abundance
+df <- 100*df/rarefactiondepth
+
+# prepare a meta data file
+group_info <- data.frame(row.names = rownames(df), t(as.data.frame(strsplit(as.character(row.names(df)), "_"))))
+
+# remove last letter in the third column
+group_info$X3 <- gsub('.{1}$', '', group_info$X3)
+
+# combine metadata to the dominant phyla table
+df1 <- data.frame(Biosphere = as.factor(group_info[,1]),
+                  Treat = as.factor(group_info[,2]),
+                  Day = as.factor(group_info[,3]),
+                  df)
+
+#  pivot data frame from wide to long
+df2 <- df1 %>%
+  pivot_longer(cols = 4:ncol(df1), 
+               names_to = "Types", 
+               values_to = "value") %>% 
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) %>% 
+  mutate(Types = factor(Types, levels = c("only_rare", "transiently_rare", "conditionally_rare_dominant"), labels = c("Permanently rare", "Transiently rare", "Conditionally rare"))) %>% 
+  group_by(Biosphere, Treat, Day, Types) %>% 
+  summarise(avg = mean(value, na.rm=T)) 
+
+df2$avg <- as.integer(df2$avg)
+
+my_palette = c(brewer.pal(8, "Pastel1")[c(1:3)])
+
+# stacked-bar plot
+(p2 <- ggplot(df2, aes(x = Day, y = avg, fill = Types)) + 
+    geom_col(color = "black", width = 0.8, lwd = 0.1) +
+    scale_y_continuous(expand = c(0, 0), limits=c(0, 80)) +
+    scale_fill_manual(values = my_palette) +
+    facet_grid(. ~ Treat) +
+    labs(x = "Days", y = "Relative abundance (%)", title = "Rare biosphere") +
+    guides(fill = guide_legend(title="Types of rarity")) +
+    mytheme +
+    theme(legend.position = "bottom"))
+
+df3 <- df1 %>%
+  pivot_longer(cols = 4:ncol(df1), 
+               names_to = "Types", 
+               values_to = "value") %>% 
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) %>% 
+  mutate(Types = factor(Types, levels = c("only_rare", "conditionally_rare_dominant", "transiently_rare"), labels = c("Permanently rare", "Conditionally rare", "Transiently rare")))
+
+(f2 <- ggplot(df3, aes(x = Day, y = value, group = Treat, colour = Treat)) + 
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.2, alpha = 0.5, position = pd) +
+    stat_summary(fun = "mean", geom = "line", alpha = 0.4, position = pd) + 
+    stat_summary(fun = "mean", geom = "point", size = 2, alpha = 0.9, position = pd) +
+    scale_color_brewer(palette="PuBu", name = "CTS concentration") +
+    facet_grid(.~Types) +
+    labs(title = "Rare biosphere", x = "Day", y = "Relative abundance (%)") +
+    mytheme)
+
+```
+
+
+```{r}
+p <- ggarrange(p1, p2, labels = c("A", "B"), ncol = 2)
+
+# ggsave("Types_of_rare_dominant_abundance_stacked_barplots.pdf", width = 24, height = 8.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_5.pdf", width = 24, height = 8.5, units = "cm", p, scale = 1.5)
+# ggsave("Figure_5.jpg", width = 24, height = 8.5, units = "cm", p, scale = 1.5)
+
+f <- ggarrange(f1, f2, labels = c("A", "B"), widths = c(0.8, 1.2), common.legend = TRUE, legend = "right", ncol = 2)
+
+# ggsave("Types_of_rare_dominant_abundance_lineplots_raw.pdf", width = 20, height = 5, units = "cm", f, scale = 1.5)
+# ggsave("Figure_6.pdf", width = 20, height = 5, units = "cm", f, scale = 1.5)
+# ggsave("Figure_6.jpg", width = 20, height = 5, units = "cm", f, scale = 1.5)
+
+```
+
+
+### the abundance and taxonomy composition of conditionally rare/dominant
+```{r}
+
+df <- as.data.frame(t(com))
+
+df <- df %>% 
+  rownames_to_column(var = "OTU_ID") 
+
+df <- left_join(df_types, df, by = "OTU_ID") %>% 
+  column_to_rownames(var = "OTU_ID") %>% 
+  filter(Types == "conditionally_rare_dominant") %>% 
+  select(-Types)
+
+```
+There are `r nrow(df)` OTUs are conditionally rare/dominant.
+
+
+Check the relative abundance of these conditionally rare/dominant at genus level
+```{r}
+# add taxonomy info - Genera
+df <- transform(merge(taxonomy[, -c(1:5)], df, by = "row.names"), row.names = Row.names, Row.names = NULL)  
+
+df <- df %>% select(-Species)
+
+df <- aggregate(df[,-1], list(df$Genus), sum)
+row.names(df) <- df$Group.1
+df <- df[, -1]
+df <- 100*df/rarefactiondepth
+
+# remove these rows
+row.names.remove <- c("", "uncultured", "uncultured soil bacterium")
+
+df <- df[!(row.names(df) %in% row.names.remove), ]
+
+# genus kept for plotting
+row.names(df)
+
+df <- as.data.frame(t(df))
+
+# prepare a meta data file
+group_info <- data.frame(row.names = rownames(df), t(as.data.frame(strsplit(as.character(row.names(df)), "_"))))
+
+# remove last letter in the third column
+group_info$X2 <- gsub('.{1}$', '', group_info$X2)
+
+# combine metadata to the dominant phyla table
+df <- data.frame(Treat = as.factor(group_info[,1]),
+                 Day = as.factor(group_info[,2]),
+                 df)
+
+# write.csv(df, "conditionally_rare_dominant_genera.csv")
+
+#  pivot data frame from wide to long
+df1 <- df %>%
+  pivot_longer(cols = 3:ncol(df), 
+               names_to = "Genus", 
+               values_to = "value") 
+
+head(df1)
+
+df1 <- df1 %>%
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0 ton CTS/ha", "2.5 ton CTS/ha", "5 ton CTS/ha", "10 ton CTS/ha", "20 ton CTS/ha"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) 
+# %>% 
+#   group_by(Treat, Day, Genus) %>% 
+#   summarise(avg = mean(value, na.rm=T)) 
+
+pd <- position_dodge(0.2)  
+
+(p <- ggplot(df1, aes(x = Day, y = value, group = Treat, colour = Treat)) + 
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.2, alpha = 0.5, position = pd) +
+    stat_summary(fun = "mean", geom = "line", alpha = 0.5, position = pd) + 
+    stat_summary(fun = "mean", geom = "point", size = 3, position = pd) +
+    scale_color_brewer(palette="PuBu", name = "CTS concentration") +
+    facet_wrap(~Genus, nrow = 11, scales = "free_y") +
+    labs(title = "Conditionally rare/dominant genera", x = "Day", y = "Relative abundance (%)") +
+    mytheme + 
+    theme(legend.position = c(0.8, 0.03)) + 
+    theme(strip.text = element_text(face = "italic")))
+
+# ggsave("genus_conditionally_rare_dominant.pdf", width = 32, height = 30, units = "cm", p, scale = 1.5)
+
+df2 <- df1 %>% filter(
+  Genus %in% c("Nocardioides", "Nordella", "Parviterribacter", "Rubrobacter", "Tellurimicrobium",
+  "uncultured.actinobacterium", "uncultured.Gaiella.sp.", "uncultured.Solirubrobacter.sp."))
+
+df2
+
+(p2 <- ggplot(df2, aes(x = Day, y = value, group = Treat, colour = Treat)) + 
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.2, alpha = 0.5, position = pd) +
+    stat_summary(fun = "mean", geom = "line", alpha = 0.5, position = pd) + 
+    stat_summary(fun = "mean", geom = "point", size = 3, position = pd) +
+    scale_color_brewer(palette="PuBu", name = "CTS concentration") +
+    facet_wrap(~Genus, nrow = 4, scales = "free_y") +
+    labs(title = "", x = "Day", y = "Relative abundance (%)") +
+    mytheme + 
+    theme(strip.text = element_text(face = "italic")))
+
+# ggsave("Figure_4.pdf", width = 10, height = 12, units = "cm", p2, scale = 1.5)
+# ggsave("Figure_4.jpg", width = 10, height = 12, units = "cm", p2, scale = 1.5)
+
+
+# another way to show the results
+
+#  pivot data frame from wide to long
+df1 <- df %>%
+  pivot_longer(cols = 3:ncol(df), 
+               names_to = "Genus", 
+               values_to = "value") 
+
+head(df1)
+
+df1 <- df1 %>%
+  mutate(Treat = factor(Treat, levels = c("T1", "T2", "T3", "T4", "T5"), labels = c("0", "2.5", "5", "10", "20"))) %>% 
+  mutate(Day = factor(Day, levels = c("0", "45", "75", "150", "180"))) 
+
+df2 <- df1 %>% filter(
+  Genus %in% c("Nocardioides", "Nordella", "Parviterribacter", "Rubrobacter", "Tellurimicrobium",
+  "uncultured.actinobacterium", "uncultured.Gaiella.sp.", "uncultured.Solirubrobacter.sp."))
+
+df2
+# %>% 
+#   group_by(Treat, Day, Genus) %>% 
+#   summarise(avg = mean(value, na.rm=T)) 
+
+(p3 <- ggplot(df2, aes(x = Treat, y = value, group = Treat, colour = Treat)) + 
+    stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.2, alpha = 0.5, position = pd) +
+    stat_summary(fun = "mean", geom = "line", alpha = 0.5, position = pd) + 
+    stat_summary(fun = "mean", geom = "point", size = 3, alpha = 0.8, position = pd) +
+    scale_color_brewer(palette="PuBu") +
+    guides(col = FALSE) +
+    facet_wrap(~Genus, nrow = 4, scales = "free_y") +
+    labs(title = "", x = "CTS concentration (ton CTS/ha)", y = "Relative abundance (%)") +
+    mytheme + 
+    theme(strip.text = element_text(face = "italic")))
+
+# ggsave("Figure_4_new.pdf", width = 8, height = 12, units = "cm", p3, scale = 1.5)
+# ggsave("Figure_4_new.jpg", width = 8, height = 12, units = "cm", p3, scale = 1.5)
+
+```
+
+
+### Session Info
+```{r}
+sessionInfo()
+```
