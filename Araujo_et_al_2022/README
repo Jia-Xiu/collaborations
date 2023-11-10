@@ -18,3 +18,5 @@ The source scripts are:
 
 
 [^1] [Jia, X., Dini-Andreote, F. & Salles, J.F. Unravelling the interplay of ecological processes structuring the bacterial rare biosphere. ISME COMMUN. 2, 96 (2022).](https://www.nature.com/articles/s43705-022-00177-6)
+
+* [format_featuretable.R](https://github.com/Jia-Xiu/rare_biosphere_assembly_2020/blob/master/format_featuretable.R)
