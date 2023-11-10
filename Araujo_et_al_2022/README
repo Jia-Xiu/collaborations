@@ -2,3 +2,16 @@ These code of data analysis in "Changes in the bacterial rare biosphere after pe
 https://doi.org/10.1016/j.chemosphere.2022.137487
 
 Please contact me if you need any input or output data for these scripts.
+
+First, to clean up the OTU table (such as removing unwanted taxa and rarefy the table), I used the following script:
+* [format_tables.Rmd](https://github.com/Jia-Xiu/collaborations/blob/main/Araujo_et_al_2022/format_tables.Rmd)
+
+To define the rare biosphere, classify different types of rarity, I used this script:
+* [Rare_biosphere_analysis_updates_16-11-2022.Rmd](https://github.com/Jia-Xiu/collaborations/blob/main/Araujo_et_al_2022/Rare_biosphere_analysis_updates_16-11-2022.Rmd)
+
+The source scripts are:
+* [TruncateTable.R](https://github.com/Jia-Xiu/collaborations/blob/main/Araujo_et_al_2022/TruncateTable.R)
+
+* [rad.matrix.R](https://github.com/Jia-Xiu/collaborations/blob/main/Araujo_et_al_2022/rad.matrix.R)
+
+* [SummarizeRarityTypes.R](https://github.com/Jia-Xiu/collaborations/blob/main/Araujo_et_al_2022/SummarizeRarityTypes.R)
